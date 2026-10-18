@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this project, cite the repository and the relevant hardware revision."
-title: "High-altitude telemetry payload"
+title: "Stratologger"
 type: software
 authors:
   - family-names: "Biswas"

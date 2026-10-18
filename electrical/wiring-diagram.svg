@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="980" viewBox="0 0 1400 980">
   <metadata>
-    <title>High-altitude telemetry payload wiring diagram</title>
+    <title>Stratologger wiring diagram</title>
     <creator>Trishan Biswas</creator>
     <description>Project started February 2026; ongoing.</description>
   </metadata>
@@ -29,7 +29,7 @@
   </defs>
 
   <rect width="1400" height="980" fill="#ffffff"/>
-  <text x="700" y="42" text-anchor="middle" class="title">ESP32 High-altitude Payload — Wiring Diagram</text>
+  <text x="700" y="42" text-anchor="middle" class="title">Stratologger — Wiring Diagram</text>
   <text x="700" y="68" text-anchor="middle" class="subtitle">Match signal names on the modules; 14-pin TFT header order varies by manufacturer.</text>
 
   <!-- ESP32 -->

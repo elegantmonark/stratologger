@@ -1,5 +1,5 @@
 /*
- * High-altitude telemetry payload
+ * Stratologger
  * Author: Trishan Biswas
  * Project started: February 2026
  * Status: Ongoing

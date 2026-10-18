@@ -1,16 +1,18 @@
-# High-altitude telemetry payload
+# Stratologger
 
-This repository documents an ongoing ESP32 telemetry payload that records
-environmental and inertial measurements, stores them on a microSD card, and presents
-live mission data on a 320 by 240 display. The project is divided into electrical,
-display, mechanical, and software subsystems so that each part can be assembled and
-validated independently.
+Stratologger is an ongoing ESP32 telemetry payload for recording environmental and
+inertial measurements. It stores each run on a microSD card and presents live mission
+data on a 320 by 240 display. The electrical, display, mechanical, and software
+subsystems are kept separate so that each can be assembled and tested independently.
 
 **Author:** Trishan Biswas  
 **Project started:** February 2026  
 **Status:** Ongoing prototype development
 
-![Payload wiring diagram](electrical/wiring-diagram.svg)
+![Hand-drawn Stratologger V1 system and development plan](docs/images/stratologger-v1-plan.jpeg)
+
+*Initial V1 system sketch showing the planned connections, display concept, and
+development path from breadboard prototype to an enclosed payload.*
 
 ## Contents
 
