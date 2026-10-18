@@ -1,0 +1,15 @@
+schema_version: 1
+run_id: ""
+capture_date_utc: ""
+firmware_revision: ""
+hardware_revision: "breadboard"
+power_source: "usb"
+sample_interval_ms: 500
+sea_level_pressure_hpa: 1013.25
+test_type: "bench"
+duration_seconds: 0
+packet_count: 0
+checksum_errors: 0
+dropped_deadlines: 0
+notes: ""
+

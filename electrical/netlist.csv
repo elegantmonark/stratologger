@@ -1,0 +1,19 @@
+Net,ESP32 pin,Destination(s),Implementation note
+3V3,3V3,AHT/BMP VCC; MPU6050 VCC; TFT VCC; TFT BL; R2,Do not power sensors from 5 V
+GND,GND,All module grounds; button; buzzer; LED cathode; R4; C1,Use a continuous ground rail
+I2C_SDA,GPIO21,AHT/BMP SDA; MPU6050 SDA,Keep short; breakout pull-ups are normally fitted
+I2C_SCL,GPIO22,AHT/BMP SCL; MPU6050 SCL,Keep short and route beside ground
+SPI_SCK,GPIO18,TFT SCK; SD SCK,Shared VSPI clock
+SPI_MOSI,GPIO23,TFT MOSI/SDA; SD MOSI,Shared VSPI controller-to-card data
+SPI_MISO,GPIO19,TFT MISO if exposed; SD MISO,Required by SD socket
+TFT_CS,GPIO15,TFT CS,10 kohm pull-up optional for quiet boot
+TFT_DC,GPIO2,TFT DC,GPIO2 is a strapping pin; avoid external hard pulls
+TFT_RST,GPIO4,TFT RST,
+SD_CS,GPIO5,SD CS,10 kohm pull-up recommended
+STATUS_LED,GPIO25,R1 then LED anode,LED cathode to GND
+BUZZER,GPIO26,BZ1 positive,BZ1 negative to GND for low-current passive piezo
+SCREEN_BUTTON,GPIO34,SW1 to GND; R2 to 3V3,GPIO34 requires the external pull-up
+BATTERY_SENSE,GPIO35,R3/R4 midpoint; C1 to GND,R3 to protected BAT+ and R4 to GND
+RAW_BATTERY,,BAT1 protected output; R3; SW2; PS1 input,Never connect raw cell directly to VIN
+BOOST_5V,VIN,PS1 regulated 5 V output,Common ground; size supply for ESP32 and backlight peaks
+

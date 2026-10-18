@@ -1,0 +1,24 @@
+Reference,Quantity,Part,Specification / note
+U1,1,ESP32 DevKit V1,ESP32-WROOM-32 development board
+DISP1,1,ST7789V TFT module,2.4 inch 240x320 SPI 14-pin with microSD socket
+SENS1,1,AHT20 + BMP280 combo board,3.3 V I2C
+IMU1,1,MPU6050 GY-521,Use 3.3 V supply
+LED1,1,Status LED,Any colour
+R1,1,LED resistor,220 ohm
+BZ1,1,Passive piezo transducer,Low-current piezo only; use transistor for magnetic buzzer
+SW1,1,Momentary pushbutton,Normally open
+R2,1,Button pull-up,10 kohm
+R3,1,Battery divider upper resistor,100 kohm 1 percent
+R4,1,Battery divider lower resistor,100 kohm 1 percent
+C1,1,ADC filter capacitor,100 nF ceramic
+C2,1,3.3 V bulk capacitor,100 uF low-ESR electrolytic
+C3-C6,4,Local decoupling capacitors,100 nF ceramic near modules
+PS1,1,5 V boost converter,1 A minimum peak output from one-cell Li-ion
+BAT1,1,Protected Li-ion/LiPo cell,Use appropriate holder and protection
+CHG1,1,Single-cell charger/protection module,Must match cell chemistry and charging source
+SW2,1,Power switch,Rated for peak input current
+PB1,1,Perfboard,Approx. 90 x 70 mm; confirm enclosure parameters
+HDR,1 lot,Headers and sockets,Use female headers for replaceable modules
+WIRE,1 lot,Hook-up wire,Colour-coded solid core on board; stranded for enclosure links
+HW,1 lot,M2.5/M3 fasteners,Heat-set inserts optional
+

@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this project, cite the repository and the relevant hardware revision."
+title: "High-altitude telemetry payload"
+type: software
+authors:
+  - family-names: "Biswas"
+    given-names: "Trishan"
+license: Apache-2.0
+version: 0.1.0-dev
+keywords:
+  - ESP32
+  - telemetry
+  - environmental sensing
+  - inertial measurement
+  - embedded systems
+
