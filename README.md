@@ -1,70 +1,128 @@
 # Stratologger
 
-Stratologger is an ongoing ESP32 telemetry payload for recording environmental and
-inertial measurements. It stores each run on a microSD card and presents live mission
-data on a 320 by 240 display. The electrical, display, mechanical, and software
-subsystems are kept separate so that each can be assembled and tested independently.
+I'm building an ESP32 payload to record changes in altitude, temperature and motion,
+save each run to a microSD card, and show live readings on a small display. The
+project combines a custom carrier PCB, removable sensor modules, firmware and a
+PETG enclosure. The [contents](#contents) and [repository guide](#repository-guide)
+point to the design files, software results and remaining hardware work.
 
 **Author:** Trishan Biswas  
 **Project started:** February 2026  
 **Status:** Ongoing prototype development
 
-> **PCB fabrication hold (27 October 2026):** the audit identified an ESP32 socket
-> pin-map mismatch with the common 30-pin DOIT module. Do not order the existing
-> SL-1 Gerbers. Exact module identification, correction and rerouting are pending.
+| SL-1 carrier design | Initial system sketch |
+|:---:|:---:|
+| ![Angled KiCad render of the SL-1 carrier and its connectors](pcb/SL-1/views/sl1-angled-render.png) | ![Hand-drawn Stratologger system sketch and early development plan](docs/images/stratologger-v1-plan.jpeg) |
+| Current PCB design before manufacture. The ESP32 and sensor modules are not shown. | Original connections and display concept. The custom PCB replaces the drawn breadboard and perfboard stages. |
+
+> [!IMPORTANT]
+> **SL-1 is on fabrication hold.** The PCB socket map differs from the common
+> 30-pin DOIT ESP32 DevKit V1. Exact module identification, dimensions, pin-map
+> correction and rerouting are pending. Do not order the existing Gerber ZIP.
 > See [the PCB audit](pcb/SL-1/review/PCB_AUDIT.md).
-
-![Hand-drawn Stratologger V1 system and development plan](docs/images/stratologger-v1-plan.jpeg)
-
-*Initial V1 system sketch showing the planned connections, display concept, and
-early development path. The current design replaces the drawn prototyping stages
-with a custom PCB.*
 
 ## Contents
 
-[Overview](#overview) | [Current state](#current-state) | [Hardware](#hardware) |
-[Firmware](#firmware) | [Data format](#data-format) | [Mechanical design](#mechanical-design) |
-[Repository guide](#repository-guide) | [Build](#build) | [Validation](#validation) |
-[Limits](#limits) | [Next work](#next-work) | [Licence](#licence)
+- [SL-1 payload PCB](#sl-1-payload-pcb) · [PCB views](#pcb-views) · [Telemetry validation](#telemetry-validation)
+- [Overview](#overview) · [Development](#development) · [Electrical integration](#electrical-integration) · [Display and firmware](#display-and-firmware)
+- [Enclosure](#enclosure) · [Data format](#data-format) · [Limitations](#limitations) · [Repository guide](#repository-guide)
+- [Next work](#next-work) · [Licence](#licence) · [Building the firmware](#building-the-firmware) · [Reproducing the checks](#reproducing-the-checks)
+
+## SL-1 payload PCB
+
+SL-1 is a two-layer, 90 by 70 mm carrier board. The ESP32 plugs into two 15-pin
+female sockets, the AHT20/BMP280 connects through a four-pin male header, and the
+GY-521 uses an eight-pin female socket. Four M3 mounting holes support the board
+inside the enclosure.
+
+The TFT and its onboard microSD socket mount in the lid and connect through a short
+keyed 2x7 harness. Keeping the display separate leaves room for the modules below
+and makes it replaceable. The separate TF-card reader is not used.
+
+The [KiCad project](pcb/SL-1/Stratologger_SL1.kicad_pro),
+[routed board](pcb/SL-1/Stratologger_SL1.kicad_pcb),
+[assembly BOM](pcb/SL-1/manufacturing/assembly-bom.csv) and
+[board guide](pcb/SL-1/README.md) are available for review. The design includes
+ground planes, an ESP32 antenna keep-out, regulated 5 V input protection and a
+single-cell battery-voltage divider.
+
+The audited layout passes KiCad's filled-zone DRC, but the independent pin audit
+found that its ESP32 socket assignments do not match the common 30-pin DOIT board.
+Passing DRC does not establish the correct module pinout. The existing
+[manufacturing outputs](pcb/SL-1/manufacturing/README.md) are historical files;
+they will need regenerating after the socket map and routing are corrected.
+
+## PCB views
+
+These are KiCad screenshots of the SL-1 review design before manufacture.
+The renders show the carrier, sockets and connectors. The plug-in ESP32, sensor
+boards and remote TFT are absent, so these views do not confirm assembled fit.
+F1 appears as a footprint because its solid 3D model is not shown.
+
+### Routed layout
+
+![SL-1 routing, module outlines, antenna keep-out and mounting holes in KiCad](pcb/SL-1/views/sl1-routed-layout.png)
+
+### Component renders
+
+| Top view | Angled view |
+|:---:|:---:|
+| ![Top KiCad render of the SL-1 carrier board](pcb/SL-1/views/sl1-top-render.png) | ![Angled KiCad render showing the SL-1 sockets and display connector](pcb/SL-1/views/sl1-angled-render.png) |
+
+## Telemetry validation
+
+I checked the CSV serializer with 100,000 synthetic rows after finding a mismatch
+between the checksum calculation and the saved decimal values. The earlier logger
+calculated its checksum before rounding the measurements for CSV. That produced
+512 checksum mismatches in the test. The revised serializer checks the values
+actually written to the file and produced zero mismatches on the same inputs.
+
+![Synthetic telemetry validation results and controlled fault cases](results/log-validation/validation_overview.png)
+
+All 19 controlled cases met their stated expectations. They cover clean data,
+altered measurements, missing and duplicated packets, reordered rows, timing faults,
+invalid values, incomplete rows and counter rollover. One case demonstrates that
+two changes can cancel under XOR and leave the checksum unchanged.
+
+The [results and method](results/log-validation/README.md) include the
+[fault matrix](results/log-validation/fault_matrix.csv), source hashes and limits.
+These are software checks with synthetic inputs. Sensor accuracy, SD write
+reliability and operation under physical stress still need bench measurements.
 
 ## Overview
 
-The payload uses an ESP32 DevKit V1 as the controller. An AHT20/BMP280 combination
-board measures temperature, humidity, pressure, and barometric altitude. An MPU6050
-records three-axis acceleration and angular velocity. The ST7789V display and its
-onboard microSD socket share one VSPI bus with separate chip-select lines.
+The payload samples an AHT20/BMP280 combination board and an MPU6050 every 500 ms.
+It records temperature, humidity, pressure, barometric altitude, acceleration and
+angular velocity, together with packet numbers, timestamps and a checksum.
 
-| Subsystem | Main components | Purpose |
+The work is split into four subsystems:
+
+| Subsystem | Purpose | Current state |
 |---|---|---|
-| Electrical | ESP32, sensors, protected power input | Power distribution and signal interconnection |
-| Display | ST7789V TFT and onboard SD socket | Live telemetry and data storage |
-| Mechanical | Parametric PETG enclosure | Module retention, access, ventilation, and protection |
-| Software | Arduino framework and PlatformIO | Acquisition, logging, display rendering, and fault reporting |
+| Electrical | Carrier PCB, removable modules and power distribution | SL-1 routed; fabrication held for socket-map correction and measured fit |
+| Display | Landscape ST7789V TFT, screen button and onboard SD socket | UI and separate demo compile; physical display and harness checks pending |
+| Mechanical | PETG enclosure, module retention, vents and access | Parametric source available; dimensions and printed fit unverified |
+| Software | Acquisition, CSV logging, display rendering and host analysis | Firmware builds; synthetic log checks recorded; hardware captures pending |
 
-The firmware records one packet every 500 ms. Each packet contains environmental
-measurements, barometric altitude, acceleration, angular velocity, a timestamp, a
-packet number, and a 32-bit XOR integrity value.
+No assembled payload, battery-endurance result or environmental test run is
+currently published.
 
-## Current state
+## Development
 
-| Area | Current state |
-|---|---|
-| Firmware | Builds successfully for `esp32dev` with the pinned PlatformIO configuration |
-| Host validation | CSV integrity tests pass |
-| Electrical design | Pin map, BOM, netlist, wiring diagram, and assembly guidance documented |
-| Custom PCB | DRC-clean legacy routing, but fabrication blocked by ESP32 socket-map review; logo added |
-| Physical assembly | Pending PCB fabrication and module fit checks |
-| Enclosure | Parametric source complete; final dimensions and printed fit remain unverified |
-| Mission data | No hardware capture is currently published |
-| Telemetry software validation | 100,000 synthetic rows checked with the revised serializer; 19 controlled fault cases recorded |
-| Display demo | Separate synthetic UI firmware builds; physical screen test pending |
+The project began in February 2026 with an ESP32, environmental sensing, an IMU,
+removable storage and a local display. The first sketch outlined the connections,
+screen concept and a path from prototyping to an enclosed payload.
 
-Software completion does not establish hardware operation. Photographs, measurements,
-and data will be added only after the corresponding configuration has been tested.
+The October firmware baseline brought together sensor acquisition, three display
+screens, CSV logging and host validation. The electrical design then moved to the
+SL-1 carrier so the modules could remain removable inside the enclosure.
 
-## Hardware
+The PCB review exposed the ESP32 socket-map mismatch despite clean routing checks.
+The November software checks also exposed the checksum rounding fault described
+above. Both findings are recorded in the
+[development log](docs/development-log.md) and [validation record](docs/validation.md).
 
-### Pin assignment
+## Electrical integration
 
 | Function | ESP32 pin |
 |---|---:|
@@ -75,43 +133,52 @@ and data will be added only after the corresponding configuration has been teste
 | Screen button | GPIO34 with external 10 kOhm pull-up |
 | Battery measurement | GPIO35 through a 100 kOhm / 100 kOhm divider |
 
-GPIO34 has no internal pull-up. The button therefore requires the documented external
-resistor. GPIO35 was selected as the battery ADC input because it is input-only and
-does not conflict with the other buses.
+These are the intended GPIO functions. The carrier's physical socket positions
+still need correcting against the exact ESP32 module. The
+[wiring diagram](electrical/wiring-diagram.svg), [netlist](electrical/netlist.csv),
+[BOM](electrical/bom.csv) and [assembly guide](electrical/assembly.md) document the
+connections and power boundaries.
 
-The exact wiring is recorded in the [diagram](electrical/wiring-diagram.svg),
-[netlist](electrical/netlist.csv), and [assembly guide](electrical/assembly.md).
-Fourteen-pin ST7789 boards do not have a universal header order; connections must be
-matched to the silk-screened signal names on the actual module.
+The environmental header runs `VDD, SDA, GND, SCL`. The display harness must be
+matched to the signal names on the actual TFT board; fourteen-pin modules do not
+share a universal pin order. TFT and SD use the same SPI bus with separate
+chip-select lines.
 
-> [!CAUTION]
-> A bare 3.0 to 4.2 V Li-ion or LiPo cell must not be connected directly to the
-> DevKit `VIN` pin. Standalone operation requires a protected cell and a verified
-> regulated supply. Initial bring-up should use USB power.
+Standalone power requires a protected single cell and a regulated 5 V supply.
+The `5V POWER` input and measurement-only `BAT SENSE` input are separate.
+A raw Li-ion or LiPo cell must not be connected directly to the 5 V input.
 
-## Firmware
+## Display and firmware
 
-The runtime is divided into three modules:
+The 2.4-inch ST7789V runs in landscape at 320 by 240 pixels. A single button cycles
+between live telemetry, IMU detail and system status. The live view combines an
+altitude gauge, a 60-second trace, environmental readings and a simple artificial
+horizon. The IMU page shows acceleration and angular-rate traces; the system page
+shows raw readings and logging status.
 
-- `SensorManager` reads the three I2C devices and derives load, roll, and pitch.
-- `TelemetryLogger` creates non-overwriting CSV files and flushes each packet to SD.
-- `DisplayManager` maintains graph buffers and renders three mission-control screens.
+The firmware separates sensor acquisition (`SensorManager`), file handling
+(`TelemetryLogger`) and rendering (`DisplayManager`). TFT and SD transfers run
+sequentially on the shared SPI bus. Boot faults are reported on the display when
+available and through USB serial.
 
-The TFT and SD socket are accessed sequentially because they share VSPI. This avoids
-concurrent ownership of the bus and does not require a mutex at the 2 Hz update rate.
+The [display subsystem guide](tft/README.md) includes the cable map and a separate
+demo that supplies labelled synthetic values to the UI. Both firmware targets
+compile; the display and finished harness still need checking on hardware.
 
-The [display demo](tft/README.md#display-demo) runs the live, IMU and system screens
-with labelled synthetic values. It can be uploaded before the sensors or SD card are
-connected. It has not yet been checked on the physical display.
+## Enclosure
 
-Boot faults are shown on the TFT when available and are always written to the USB
-serial console as a bit mask. The payload stops acquisition after a critical boot
-fault so invalid data is not logged as a valid run.
+The [parametric OpenSCAD source](mechanical/enclosure.scad) defines a PETG base and
+lid with a display aperture, button opening, sensor vents, PCB supports and USB
+access. The carrier mounts in the base and the TFT mounts in the lid.
+
+The dimensions are nominal. Final module heights, TFT mounting holes, battery
+holder, cable bends and connector access must be measured before printing. The
+[mechanical notes](mechanical/README.md) record the current assumptions.
 
 ## Data format
 
 Logs are named `/LOG_001.CSV` through `/LOG_999.CSV` without overwriting an existing
-file. The schema is:
+file. Each row follows this schema:
 
 ```text
 PACKET_ID,TIMESTAMP_MS,TEMP_C,HUMIDITY_PCT,PRESSURE_HPA,ALTITUDE_M,
@@ -119,92 +186,81 @@ ACCEL_X_MS2,ACCEL_Y_MS2,ACCEL_Z_MS2,GYRO_X_RADS,GYRO_Y_RADS,
 GYRO_Z_RADS,CHECKSUM_HEX
 ```
 
-[`data/format-example.csv`](data/format-example.csv) is a short synthetic format
-example, not a hardware capture. New runs should be accompanied by the metadata in
-[`data/run-metadata-template.yaml`](data/run-metadata-template.yaml).
+The [format example](data/format-example.csv) contains synthetic values. New
+hardware captures should include the configuration and conditions recorded in the
+[run metadata template](data/run-metadata-template.yaml).
 
-## Mechanical design
+## Limitations
 
-[`mechanical/enclosure.scad`](mechanical/enclosure.scad) generates a base and lid for
-PETG printing. The model includes a display aperture, button opening,
-environmental-sensor vents, PCB supports, and side access for USB and power.
+Barometric altitude depends on reference-pressure calibration. Acceleration during
+motion distorts the gravity-derived roll and pitch display. The 2 Hz mission log
+cannot support a meaningful vibration FFT above 1 Hz; that test needs a separate
+acquisition rate.
 
-The current dimensions are nominal. The display aperture, mounting holes, PCB,
-connector positions, battery holder, and installed component height must be measured
-before the model is treated as print-ready. See the [mechanical notes](mechanical/README.md).
+The XOR checksum misses some combinations of changes. It detects simple corruption
+and does not provide authentication. Firmware compilation and host checks also
+leave sensor behaviour, supply stability, SD logging and enclosure fit unverified.
+The [detailed limits](docs/limitations.md) and [test plan](docs/test-plan.md) cover
+the remaining bench, thermal, vibration, impact and endurance work.
 
 ## Repository guide
 
 | Location | Contents |
 |---|---|
-| [`data/`](data/README.md) | CSV schema example and run metadata template |
-| [`docs/`](docs/architecture.md) | Architecture, development record, validation, safety, limits, and test plan |
-| [`electrical/`](electrical/assembly.md) | BOM, netlist, wiring diagram, and PCB assembly guidance |
-| [`hardware/`](hardware/README.md) | Physical build state and photograph publication rules |
-| [`include/`](include/config.h) | Pin assignments, constants, and shared telemetry types |
-| [`mechanical/`](mechanical/README.md) | Parametric enclosure source and fit requirements |
-| [`pcb/`](pcb/README.md) | Routed motherboard source, manufacturing files, and order notes |
-| [`results/`](results/README.md) | Published test results when available |
-| [`src/`](src/main.cpp) | ESP32 firmware |
-| [`tests/`](tests/test_repository.py) | Repository integrity and metadata tests |
-| [`tft/`](tft/README.md) | Display subsystem and TFT_eSPI configuration |
-| [`tools/`](tools/validate_log.py) | Host-side CSV validator and tests |
+| [`pcb/`](pcb/README.md) | SL-1 KiCad source, review screenshots, audit and manufacturing status |
+| [`electrical/`](electrical/assembly.md) | Wiring diagram, netlist, BOM and integration notes |
+| [`tft/`](tft/README.md) | Display configuration, screen behaviour and cable map |
+| [`mechanical/`](mechanical/README.md) | Parametric enclosure and fit assumptions |
+| [`src/`](src/main.cpp) and [`include/`](include/config.h) | ESP32 firmware, display demo and shared configuration |
+| [`tools/`](tools/validate_log.py) and [`tests/`](tests/test_repository.py) | CSV analysis, serializer fixture and repository checks |
+| [`results/`](results/README.md) | Synthetic telemetry validation and recorded results |
+| [`data/`](data/README.md) | CSV example and capture metadata template |
+| [`docs/`](docs/development-log.md) | Development, architecture, validation, limits and test plans |
+| [`hardware/`](hardware/README.md) | Physical build state and future hardware evidence |
 
-## Build
+## Next work
 
-Install the PlatformIO extension for Visual Studio Code, open the repository root,
-and run:
+1. Confirm the exact ESP32 pinout and measure all module headers and body clearances.
+2. Correct the SL-1 socket map and routing, repeat the electrical review and regenerate manufacturing files.
+3. Assemble one board and check power, boot, sensors, TFT, SD and the display harness.
+4. Fit the enclosure around the measured assembly and standalone power system.
+5. Publish repeat captures and physical test results with their build configurations.
 
-```text
-pio run
-pio run --target upload
+## Licence
+
+The firmware, hardware documentation and mechanical source are released under the
+Apache License 2.0 in [`LICENSE`](LICENSE).
+
+## Building the firmware
+
+Install the PlatformIO extension for Visual Studio Code and open the repository
+root. Build, upload and open the serial monitor with:
+
+```bash
+pio run -e esp32dev
+pio run -e esp32dev --target upload
 pio device monitor
 ```
 
-The board configuration and library versions are declared in `platformio.ini`.
-TFT_eSPI is configured with build flags, so its installed `User_Setup.h` does not
-need to be edited.
+The [PlatformIO configuration](platformio.ini) selects the Arduino framework,
+dependencies and TFT_eSPI pin settings. The installed library's `User_Setup.h`
+does not need editing. To build the display-only demo:
 
-## Validation
+```bash
+pio run -e display-demo
+```
+
+## Reproducing the checks
 
 Run the host checks from the repository root:
 
-```text
-python -m unittest discover -s tools -p "test_*.py" -v
+```bash
+python -m unittest discover -s tools -p 'test_*.py' -v
 python -m unittest discover -s tests -v
 python tools/validate_log.py data/format-example.csv
 ```
 
-The latest software verification record is in [`docs/validation.md`](docs/validation.md).
-The [telemetry validation campaign](results/log-validation/README.md) records the
-checksum rounding diagnosis, controlled fault cases, plots and limits.
-The planned bench, elevator, thermal, vibration, impact, endurance, and corruption
-tests are defined in [`docs/test-plan.md`](docs/test-plan.md).
-
-## Limits
-
-The current repository does not contain evidence of an assembled PCB, printed
-enclosure, battery endurance run, or environmental test campaign. Barometric
-altitude depends on reference-pressure calibration. Gravity-derived roll and pitch
-are disturbed by linear acceleration. The 2 Hz mission log is not suitable for a
-meaningful vibration FFT above 1 Hz.
-
-The checksum detects simple data corruption but is not cryptographic authentication.
-The payload is an engineering prototype and is not flight-certified. Further limits
-are recorded in [`docs/limitations.md`](docs/limitations.md).
-
-## Next work
-
-1. Print SL-1 at 1:1 and verify the exact modules and pin-1 positions against it.
-2. Review the 2x7 display harness map and continuity-test the finished cable.
-3. Correct the confirmed ESP32 socket map, reroute, review and regenerate the package before ordering.
-4. Assemble and test the USB-powered configuration before adding battery power.
-5. Verify sensor addresses, display operation, SD logging and fault reporting.
-6. Update the enclosure around the measured TFT, battery and installed PCB heights.
-7. Add the protected standalone power subsystem and complete endurance testing.
-
-## Licence
-
-The firmware, hardware documentation, and mechanical source are released under the
-Apache License 2.0 in [`LICENSE`](LICENSE).
-
+The [telemetry validation instructions](results/log-validation/README.md#run-it-again)
+explain how to compile the C++ serializer fixture and regenerate the controlled
+cases and plots. PCB review and fabrication requirements are documented separately
+in the [SL-1 board guide](pcb/SL-1/README.md).
