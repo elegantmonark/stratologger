@@ -41,8 +41,8 @@
   <text x="535" y="310" class="pin">GPIO22  SCL</text>
   <text x="535" y="370" class="pin">GPIO34  BUTTON</text>
   <text x="535" y="410" class="pin">GPIO35  BAT ADC</text>
-  <text x="535" y="470" class="pin">GPIO25  LED</text>
-  <text x="535" y="510" class="pin">GPIO26  PIEZO</text>
+  <text x="535" y="470" class="pin">GPIO25  SPARE</text>
+  <text x="535" y="510" class="pin">GPIO26  SPARE</text>
   <text x="535" y="575" class="pin">VIN  (regulated 5 V only)</text>
 
   <text x="865" y="185" text-anchor="end" class="pin">3V3</text>
@@ -58,10 +58,10 @@
   <!-- I2C boards -->
   <rect x="45" y="105" width="315" height="205" class="box"/>
   <text x="202" y="138" text-anchor="middle" class="head">AHT20 + BMP280</text>
-  <text x="70" y="180" class="pin">VCC → 3V3</text>
-  <text x="70" y="215" class="pin">GND → GND</text>
-  <text x="70" y="260" class="pin">SDA → GPIO21</text>
-  <text x="70" y="295" class="pin">SCL → GPIO22</text>
+  <text x="70" y="180" class="pin">1 VDD → 3V3</text>
+  <text x="70" y="215" class="pin">2 SDA → GPIO21</text>
+  <text x="70" y="260" class="pin">3 GND → GND</text>
+  <text x="70" y="295" class="pin">4 SCL → GPIO22</text>
 
   <rect x="45" y="345" width="315" height="220" class="box"/>
   <text x="202" y="378" text-anchor="middle" class="head">MPU6050 GY-521</text>
@@ -96,7 +96,7 @@
   <text x="1065" y="480" class="pin">RST/RES → GPIO4</text>
   <text x="1065" y="520" class="pin">SD CS → GPIO5</text>
   <text x="1065" y="565" class="note">Do not join the two CS pins.</text>
-  <text x="1065" y="587" class="note">Use a short, keyed harness.</text>
+  <text x="1065" y="587" class="note">Use a keyed 2x7 harness, 100 mm maximum.</text>
 
   <path d="M890 185 H1040" class="wire pwr"/>
   <path d="M890 220 H1040" class="wire gnd"/>
@@ -110,12 +110,12 @@
 
   <!-- Small output/input circuits -->
   <rect x="45" y="610" width="400" height="280" class="box"/>
-  <text x="245" y="643" text-anchor="middle" class="head">Button, LED and buzzer</text>
+  <text x="245" y="643" text-anchor="middle" class="head">Remote screen button</text>
   <text x="70" y="690" class="pin">3V3 ─ 10 kΩ ─┬─ GPIO34</text>
   <text x="70" y="720" class="pin">              └─ button ─ GND</text>
-  <text x="70" y="770" class="pin">GPIO25 ─ 220 Ω ─ LED ─ GND</text>
-  <text x="70" y="820" class="pin">GPIO26 ─ passive piezo ─ GND</text>
-  <text x="70" y="852" class="note">Use a transistor if buzzer current exceeds ~8 mA.</text>
+  <text x="70" y="770" class="pin">GPIO25 and GPIO26 are unused on SL-1.</text>
+  <text x="70" y="820" class="pin">Boot faults: TFT + USB serial console</text>
+  <text x="70" y="852" class="note">No discrete indicator or sounder is fitted.</text>
   <path d="M445 685 H485 V370 H510" class="wire ctrl"/>
   <path d="M445 765 H475 V470 H510" class="wire ctrl"/>
   <path d="M445 815 H465 V510 H510" class="wire ctrl"/>

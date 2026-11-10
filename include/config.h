@@ -22,8 +22,6 @@ constexpr uint8_t PIN_SPI_MOSI = 23;
 constexpr uint8_t PIN_TFT_CS = 15;
 constexpr uint8_t PIN_SD_CS = 5;
 
-constexpr uint8_t PIN_LED = 25;
-constexpr uint8_t PIN_BUZZER = 26;
 constexpr uint8_t PIN_SCREEN_BUTTON = 34;  // External 10 kOhm pull-up required.
 constexpr uint8_t PIN_BATTERY_ADC = 35;
 
@@ -44,9 +42,6 @@ constexpr float BATTERY_R_BOTTOM_OHM = 100000.0F;
 constexpr float BATTERY_CALIBRATION = 1.000F;
 constexpr float BATTERY_EMPTY_V = 3.20F;
 constexpr float BATTERY_FULL_V = 4.20F;
-
-constexpr uint8_t BUZZER_LEDC_CHANNEL = 0;
-constexpr uint8_t BUZZER_LEDC_RESOLUTION = 8;
 
 }  // namespace Config
 

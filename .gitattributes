@@ -8,4 +8,18 @@
 *.svg text eol=lf
 *.yaml text eol=lf
 *.csv text eol=lf
+*.kicad_pcb text eol=lf
+*.kicad_pro text eol=lf
+*.png binary
+*.jpeg binary
+*.zip binary
+*.drl text eol=lf
+*.gbr text eol=lf
+*.gtl text eol=lf
+*.gbl text eol=lf
+*.gts text eol=lf
+*.gbs text eol=lf
+*.gto text eol=lf
+*.gbo text eol=lf
+*.gm1 text eol=lf
 

@@ -1,0 +1,3328 @@
+{
+  "board": "Stratologger_SL1.kicad_pcb",
+  "kicad_version": "10.0.1",
+  "errors": [],
+  "checked_pad_count": 78,
+  "checked_firmware_constants": 15,
+  "track_metrics": {
+    "+3V3": {
+      "total_copper_length_mm": 303.76,
+      "widths_mm": [
+        0.6,
+        0.8
+      ]
+    },
+    "+5V_EXT": {
+      "total_copper_length_mm": 4.16,
+      "widths_mm": [
+        1.0
+      ]
+    },
+    "+5V_FUSED": {
+      "total_copper_length_mm": 2.86,
+      "widths_mm": [
+        1.0
+      ]
+    },
+    "BATTERY_SENSE": {
+      "total_copper_length_mm": 90.33,
+      "widths_mm": [
+        0.4
+      ]
+    },
+    "BAT_RAW": {
+      "total_copper_length_mm": 6.92,
+      "widths_mm": [
+        0.5
+      ]
+    },
+    "I2C_SCL": {
+      "total_copper_length_mm": 25.02,
+      "widths_mm": [
+        0.4
+      ]
+    },
+    "I2C_SDA": {
+      "total_copper_length_mm": 41.1,
+      "widths_mm": [
+        0.4
+      ]
+    },
+    "SCREEN_BUTTON": {
+      "total_copper_length_mm": 187.64,
+      "widths_mm": [
+        0.3
+      ]
+    },
+    "SD_CS": {
+      "total_copper_length_mm": 35.93,
+      "widths_mm": [
+        0.4
+      ]
+    },
+    "SPI_MISO": {
+      "total_copper_length_mm": 35.9,
+      "widths_mm": [
+        0.4
+      ]
+    },
+    "SPI_MOSI": {
+      "total_copper_length_mm": 66.35,
+      "widths_mm": [
+        0.4
+      ]
+    },
+    "SPI_SCK": {
+      "total_copper_length_mm": 35.75,
+      "widths_mm": [
+        0.4
+      ]
+    },
+    "TFT_CS": {
+      "total_copper_length_mm": 39.76,
+      "widths_mm": [
+        0.4
+      ]
+    },
+    "TFT_DC": {
+      "total_copper_length_mm": 37.16,
+      "widths_mm": [
+        0.4
+      ]
+    },
+    "TFT_RST": {
+      "total_copper_length_mm": 54.7,
+      "widths_mm": [
+        0.4
+      ]
+    },
+    "VIN_5V": {
+      "total_copper_length_mm": 24.12,
+      "widths_mm": [
+        1.0
+      ]
+    }
+  },
+  "pads": [
+    {
+      "reference": "J1",
+      "pad": 1,
+      "net": "+3V3",
+      "xy_mm": [
+        36.3,
+        31.5
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J1",
+      "pad": 2,
+      "net": "",
+      "xy_mm": [
+        36.3,
+        34.04
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J1",
+      "pad": 3,
+      "net": "",
+      "xy_mm": [
+        36.3,
+        36.58
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J1",
+      "pad": 4,
+      "net": "",
+      "xy_mm": [
+        36.3,
+        39.12
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J1",
+      "pad": 5,
+      "net": "SCREEN_BUTTON",
+      "xy_mm": [
+        36.3,
+        41.66
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J1",
+      "pad": 6,
+      "net": "BATTERY_SENSE",
+      "xy_mm": [
+        36.3,
+        44.2
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J1",
+      "pad": 7,
+      "net": "",
+      "xy_mm": [
+        36.3,
+        46.74
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J1",
+      "pad": 8,
+      "net": "",
+      "xy_mm": [
+        36.3,
+        49.28
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J1",
+      "pad": 9,
+      "net": "",
+      "xy_mm": [
+        36.3,
+        51.82
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J1",
+      "pad": 10,
+      "net": "",
+      "xy_mm": [
+        36.3,
+        54.36
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J1",
+      "pad": 11,
+      "net": "",
+      "xy_mm": [
+        36.3,
+        56.9
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J1",
+      "pad": 12,
+      "net": "",
+      "xy_mm": [
+        36.3,
+        59.44
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J1",
+      "pad": 13,
+      "net": "",
+      "xy_mm": [
+        36.3,
+        61.98
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J1",
+      "pad": 14,
+      "net": "GND",
+      "xy_mm": [
+        36.3,
+        64.52
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J1",
+      "pad": 15,
+      "net": "VIN_5V",
+      "xy_mm": [
+        36.3,
+        67.06
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J2",
+      "pad": 1,
+      "net": "GND",
+      "xy_mm": [
+        61.7,
+        31.5
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J2",
+      "pad": 2,
+      "net": "SPI_MOSI",
+      "xy_mm": [
+        61.7,
+        34.04
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J2",
+      "pad": 3,
+      "net": "I2C_SCL",
+      "xy_mm": [
+        61.7,
+        36.58
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J2",
+      "pad": 4,
+      "net": "",
+      "xy_mm": [
+        61.7,
+        39.12
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J2",
+      "pad": 5,
+      "net": "",
+      "xy_mm": [
+        61.7,
+        41.66
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J2",
+      "pad": 6,
+      "net": "I2C_SDA",
+      "xy_mm": [
+        61.7,
+        44.2
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J2",
+      "pad": 7,
+      "net": "GND",
+      "xy_mm": [
+        61.7,
+        46.74
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J2",
+      "pad": 8,
+      "net": "SPI_MISO",
+      "xy_mm": [
+        61.7,
+        49.28
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J2",
+      "pad": 9,
+      "net": "SPI_SCK",
+      "xy_mm": [
+        61.7,
+        51.82
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J2",
+      "pad": 10,
+      "net": "SD_CS",
+      "xy_mm": [
+        61.7,
+        54.36
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J2",
+      "pad": 11,
+      "net": "",
+      "xy_mm": [
+        61.7,
+        56.9
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J2",
+      "pad": 12,
+      "net": "",
+      "xy_mm": [
+        61.7,
+        59.44
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J2",
+      "pad": 13,
+      "net": "TFT_RST",
+      "xy_mm": [
+        61.7,
+        61.98
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J2",
+      "pad": 14,
+      "net": "TFT_DC",
+      "xy_mm": [
+        61.7,
+        64.52
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J2",
+      "pad": 15,
+      "net": "TFT_CS",
+      "xy_mm": [
+        61.7,
+        67.06
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J3",
+      "pad": 1,
+      "net": "+3V3",
+      "xy_mm": [
+        78.0,
+        25.5
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J3",
+      "pad": 2,
+      "net": "I2C_SDA",
+      "xy_mm": [
+        78.0,
+        28.04
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J3",
+      "pad": 3,
+      "net": "GND",
+      "xy_mm": [
+        78.0,
+        30.58
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J3",
+      "pad": 4,
+      "net": "I2C_SCL",
+      "xy_mm": [
+        78.0,
+        33.12
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J4",
+      "pad": 1,
+      "net": "+3V3",
+      "xy_mm": [
+        72.0,
+        43.0
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J4",
+      "pad": 2,
+      "net": "GND",
+      "xy_mm": [
+        74.54,
+        43.0
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J4",
+      "pad": 3,
+      "net": "I2C_SCL",
+      "xy_mm": [
+        77.08,
+        43.0
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J4",
+      "pad": 4,
+      "net": "I2C_SDA",
+      "xy_mm": [
+        79.62,
+        43.0
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J4",
+      "pad": 5,
+      "net": "",
+      "xy_mm": [
+        82.16,
+        43.0
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J4",
+      "pad": 6,
+      "net": "",
+      "xy_mm": [
+        84.7,
+        43.0
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J4",
+      "pad": 7,
+      "net": "",
+      "xy_mm": [
+        87.24,
+        43.0
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J4",
+      "pad": 8,
+      "net": "",
+      "xy_mm": [
+        89.78,
+        43.0
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J5",
+      "pad": 1,
+      "net": "+3V3",
+      "xy_mm": [
+        97.0,
+        42.0
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J5",
+      "pad": 2,
+      "net": "GND",
+      "xy_mm": [
+        99.54,
+        42.0
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J5",
+      "pad": 3,
+      "net": "SPI_MOSI",
+      "xy_mm": [
+        97.0,
+        44.54
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J5",
+      "pad": 4,
+      "net": "GND",
+      "xy_mm": [
+        99.54,
+        44.54
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J5",
+      "pad": 5,
+      "net": "SPI_MISO",
+      "xy_mm": [
+        97.0,
+        47.08
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J5",
+      "pad": 6,
+      "net": "GND",
+      "xy_mm": [
+        99.54,
+        47.08
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J5",
+      "pad": 7,
+      "net": "SPI_SCK",
+      "xy_mm": [
+        97.0,
+        49.62
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J5",
+      "pad": 8,
+      "net": "GND",
+      "xy_mm": [
+        99.54,
+        49.62
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J5",
+      "pad": 9,
+      "net": "SD_CS",
+      "xy_mm": [
+        97.0,
+        52.16
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J5",
+      "pad": 10,
+      "net": "TFT_RST",
+      "xy_mm": [
+        99.54,
+        52.16
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J5",
+      "pad": 11,
+      "net": "TFT_DC",
+      "xy_mm": [
+        97.0,
+        54.7
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J5",
+      "pad": 12,
+      "net": "+3V3",
+      "xy_mm": [
+        99.54,
+        54.7
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J5",
+      "pad": 13,
+      "net": "TFT_CS",
+      "xy_mm": [
+        97.0,
+        57.24
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J5",
+      "pad": 14,
+      "net": "GND",
+      "xy_mm": [
+        99.54,
+        57.24
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J6",
+      "pad": 1,
+      "net": "SCREEN_BUTTON",
+      "xy_mm": [
+        101.0,
+        31.0
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J6",
+      "pad": 2,
+      "net": "GND",
+      "xy_mm": [
+        103.54,
+        31.0
+      ],
+      "size_mm": [
+        1.7,
+        1.7
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J7",
+      "pad": 1,
+      "net": "+5V_EXT",
+      "xy_mm": [
+        34.5,
+        85.0
+      ],
+      "size_mm": [
+        1.7,
+        2.0
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J7",
+      "pad": 2,
+      "net": "GND",
+      "xy_mm": [
+        32.0,
+        85.0
+      ],
+      "size_mm": [
+        1.7,
+        2.0
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J8",
+      "pad": 1,
+      "net": "BAT_RAW",
+      "xy_mm": [
+        57.0,
+        85.0
+      ],
+      "size_mm": [
+        1.7,
+        2.0
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "J8",
+      "pad": 2,
+      "net": "GND",
+      "xy_mm": [
+        54.5,
+        85.0
+      ],
+      "size_mm": [
+        1.7,
+        2.0
+      ],
+      "drill_mm": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "reference": "F1",
+      "pad": 1,
+      "net": "+5V_EXT",
+      "xy_mm": [
+        38.3625,
+        84.0
+      ],
+      "size_mm": [
+        1.125,
+        3.4
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "reference": "F1",
+      "pad": 2,
+      "net": "+5V_FUSED",
+      "xy_mm": [
+        42.6375,
+        84.0
+      ],
+      "size_mm": [
+        1.125,
+        3.4
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "reference": "D1",
+      "pad": 1,
+      "net": "VIN_5V",
+      "xy_mm": [
+        49.5,
+        84.0
+      ],
+      "size_mm": [
+        2.5,
+        1.8
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "reference": "D1",
+      "pad": 2,
+      "net": "+5V_FUSED",
+      "xy_mm": [
+        45.5,
+        84.0
+      ],
+      "size_mm": [
+        2.5,
+        1.8
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "reference": "R2",
+      "pad": 1,
+      "net": "+3V3",
+      "xy_mm": [
+        90.0,
+        28.9125
+      ],
+      "size_mm": [
+        1.025,
+        1.4
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "reference": "R2",
+      "pad": 2,
+      "net": "SCREEN_BUTTON",
+      "xy_mm": [
+        90.0,
+        27.0875
+      ],
+      "size_mm": [
+        1.025,
+        1.4
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "reference": "R3",
+      "pad": 1,
+      "net": "BAT_RAW",
+      "xy_mm": [
+        63.0875,
+        83.0
+      ],
+      "size_mm": [
+        1.025,
+        1.4
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "reference": "R3",
+      "pad": 2,
+      "net": "BATTERY_SENSE",
+      "xy_mm": [
+        64.9125,
+        83.0
+      ],
+      "size_mm": [
+        1.025,
+        1.4
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "reference": "R4",
+      "pad": 1,
+      "net": "BATTERY_SENSE",
+      "xy_mm": [
+        69.0875,
+        83.0
+      ],
+      "size_mm": [
+        1.025,
+        1.4
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "reference": "R4",
+      "pad": 2,
+      "net": "GND",
+      "xy_mm": [
+        70.9125,
+        83.0
+      ],
+      "size_mm": [
+        1.025,
+        1.4
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "reference": "C1",
+      "pad": 1,
+      "net": "BATTERY_SENSE",
+      "xy_mm": [
+        69.05,
+        87.0
+      ],
+      "size_mm": [
+        1.0,
+        1.45
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "reference": "C1",
+      "pad": 2,
+      "net": "GND",
+      "xy_mm": [
+        70.95,
+        87.0
+      ],
+      "size_mm": [
+        1.0,
+        1.45
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "reference": "C2",
+      "pad": 1,
+      "net": "+3V3",
+      "xy_mm": [
+        80.0,
+        82.0
+      ],
+      "size_mm": [
+        1.6,
+        1.6
+      ],
+      "drill_mm": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "reference": "C2",
+      "pad": 2,
+      "net": "GND",
+      "xy_mm": [
+        80.0,
+        79.5
+      ],
+      "size_mm": [
+        1.6,
+        1.6
+      ],
+      "drill_mm": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "reference": "C3",
+      "pad": 1,
+      "net": "+3V3",
+      "xy_mm": [
+        84.0,
+        31.45
+      ],
+      "size_mm": [
+        1.0,
+        1.45
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "reference": "C3",
+      "pad": 2,
+      "net": "GND",
+      "xy_mm": [
+        84.0,
+        29.55
+      ],
+      "size_mm": [
+        1.0,
+        1.45
+      ],
+      "drill_mm": [
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "tracks": [
+    {
+      "net": "+5V_EXT",
+      "start_mm": [
+        36.0,
+        84.0
+      ],
+      "end_mm": [
+        38.36,
+        84.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 1.0
+    },
+    {
+      "net": "+5V_EXT",
+      "start_mm": [
+        34.5,
+        85.0
+      ],
+      "end_mm": [
+        36.0,
+        84.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 1.0
+    },
+    {
+      "net": "+5V_FUSED",
+      "start_mm": [
+        42.64,
+        84.0
+      ],
+      "end_mm": [
+        45.5,
+        84.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 1.0
+    },
+    {
+      "net": "VIN_5V",
+      "start_mm": [
+        40.0,
+        74.0
+      ],
+      "end_mm": [
+        36.3,
+        70.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 1.0
+    },
+    {
+      "net": "VIN_5V",
+      "start_mm": [
+        36.3,
+        70.0
+      ],
+      "end_mm": [
+        36.3,
+        67.06
+      ],
+      "layer": "F.Cu",
+      "width_mm": 1.0
+    },
+    {
+      "net": "VIN_5V",
+      "start_mm": [
+        49.5,
+        84.0
+      ],
+      "end_mm": [
+        49.5,
+        79.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 1.0
+    },
+    {
+      "net": "VIN_5V",
+      "start_mm": [
+        49.5,
+        79.0
+      ],
+      "end_mm": [
+        40.0,
+        74.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 1.0
+    },
+    {
+      "net": "+3V3",
+      "start_mm": [
+        84.0,
+        31.45
+      ],
+      "end_mm": [
+        86.0,
+        33.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.6
+    },
+    {
+      "net": "+3V3",
+      "start_mm": [
+        86.0,
+        33.0
+      ],
+      "end_mm": [
+        90.0,
+        28.91
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.6
+    },
+    {
+      "net": "+3V3",
+      "start_mm": [
+        84.0,
+        33.0
+      ],
+      "end_mm": [
+        84.0,
+        31.45
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.6
+    },
+    {
+      "net": "+3V3",
+      "start_mm": [
+        108.0,
+        74.0
+      ],
+      "end_mm": [
+        105.0,
+        66.0
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.8
+    },
+    {
+      "net": "+3V3",
+      "start_mm": [
+        36.3,
+        31.5
+      ],
+      "end_mm": [
+        22.0,
+        34.0
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.8
+    },
+    {
+      "net": "+3V3",
+      "start_mm": [
+        108.0,
+        40.0
+      ],
+      "end_mm": [
+        100.0,
+        38.0
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.8
+    },
+    {
+      "net": "+3V3",
+      "start_mm": [
+        85.0,
+        38.0
+      ],
+      "end_mm": [
+        85.0,
+        25.5
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.8
+    },
+    {
+      "net": "+3V3",
+      "start_mm": [
+        86.0,
+        24.0
+      ],
+      "end_mm": [
+        86.0,
+        33.0
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.6
+    },
+    {
+      "net": "+3V3",
+      "start_mm": [
+        80.0,
+        82.0
+      ],
+      "end_mm": [
+        92.0,
+        80.0
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.8
+    },
+    {
+      "net": "+3V3",
+      "start_mm": [
+        108.0,
+        74.0
+      ],
+      "end_mm": [
+        108.0,
+        40.0
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.8
+    },
+    {
+      "net": "+3V3",
+      "start_mm": [
+        105.0,
+        54.7
+      ],
+      "end_mm": [
+        99.54,
+        54.7
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.8
+    },
+    {
+      "net": "+3V3",
+      "start_mm": [
+        100.0,
+        38.0
+      ],
+      "end_mm": [
+        85.0,
+        38.0
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.8
+    },
+    {
+      "net": "+3V3",
+      "start_mm": [
+        86.0,
+        33.0
+      ],
+      "end_mm": [
+        84.0,
+        33.0
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.6
+    },
+    {
+      "net": "+3V3",
+      "start_mm": [
+        85.0,
+        38.0
+      ],
+      "end_mm": [
+        72.0,
+        38.0
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.8
+    },
+    {
+      "net": "+3V3",
+      "start_mm": [
+        78.0,
+        25.5
+      ],
+      "end_mm": [
+        86.0,
+        24.0
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.6
+    },
+    {
+      "net": "+3V3",
+      "start_mm": [
+        72.0,
+        38.0
+      ],
+      "end_mm": [
+        72.0,
+        43.0
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.8
+    },
+    {
+      "net": "+3V3",
+      "start_mm": [
+        105.0,
+        66.0
+      ],
+      "end_mm": [
+        105.0,
+        54.7
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.8
+    },
+    {
+      "net": "+3V3",
+      "start_mm": [
+        22.0,
+        82.0
+      ],
+      "end_mm": [
+        80.0,
+        82.0
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.8
+    },
+    {
+      "net": "+3V3",
+      "start_mm": [
+        92.0,
+        80.0
+      ],
+      "end_mm": [
+        108.0,
+        74.0
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.8
+    },
+    {
+      "net": "+3V3",
+      "start_mm": [
+        100.0,
+        38.0
+      ],
+      "end_mm": [
+        97.0,
+        42.0
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.8
+    },
+    {
+      "net": "+3V3",
+      "start_mm": [
+        85.0,
+        25.5
+      ],
+      "end_mm": [
+        78.0,
+        25.5
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.8
+    },
+    {
+      "net": "+3V3",
+      "start_mm": [
+        22.0,
+        34.0
+      ],
+      "end_mm": [
+        22.0,
+        82.0
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.8
+    },
+    {
+      "net": "I2C_SDA",
+      "start_mm": [
+        70.0,
+        46.0
+      ],
+      "end_mm": [
+        79.62,
+        46.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "I2C_SDA",
+      "start_mm": [
+        66.0,
+        44.2
+      ],
+      "end_mm": [
+        70.0,
+        46.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "I2C_SDA",
+      "start_mm": [
+        61.7,
+        44.2
+      ],
+      "end_mm": [
+        66.0,
+        44.2
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "I2C_SDA",
+      "start_mm": [
+        79.62,
+        43.0
+      ],
+      "end_mm": [
+        82.0,
+        40.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "I2C_SDA",
+      "start_mm": [
+        82.0,
+        40.0
+      ],
+      "end_mm": [
+        82.0,
+        28.04
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "I2C_SDA",
+      "start_mm": [
+        82.0,
+        28.04
+      ],
+      "end_mm": [
+        78.0,
+        28.04
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "I2C_SDA",
+      "start_mm": [
+        79.62,
+        46.0
+      ],
+      "end_mm": [
+        79.62,
+        43.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "I2C_SCL",
+      "start_mm": [
+        74.0,
+        36.0
+      ],
+      "end_mm": [
+        78.0,
+        33.119999
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "I2C_SCL",
+      "start_mm": [
+        66.0,
+        36.58
+      ],
+      "end_mm": [
+        70.0,
+        36.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "I2C_SCL",
+      "start_mm": [
+        61.7,
+        36.58
+      ],
+      "end_mm": [
+        66.0,
+        36.58
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "I2C_SCL",
+      "start_mm": [
+        74.0,
+        36.0
+      ],
+      "end_mm": [
+        76.0,
+        39.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "I2C_SCL",
+      "start_mm": [
+        76.0,
+        39.0
+      ],
+      "end_mm": [
+        77.08,
+        43.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "I2C_SCL",
+      "start_mm": [
+        70.0,
+        36.0
+      ],
+      "end_mm": [
+        74.0,
+        36.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "SPI_SCK",
+      "start_mm": [
+        90.0,
+        49.62
+      ],
+      "end_mm": [
+        97.0,
+        49.62
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "SPI_SCK",
+      "start_mm": [
+        61.7,
+        51.82
+      ],
+      "end_mm": [
+        66.0,
+        51.82
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "SPI_SCK",
+      "start_mm": [
+        66.0,
+        51.82
+      ],
+      "end_mm": [
+        70.0,
+        53.0
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "SPI_SCK",
+      "start_mm": [
+        70.0,
+        53.0
+      ],
+      "end_mm": [
+        90.0,
+        49.62
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "SPI_MOSI",
+      "start_mm": [
+        92.0,
+        23.0
+      ],
+      "end_mm": [
+        94.0,
+        27.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "SPI_MOSI",
+      "start_mm": [
+        61.7,
+        34.04
+      ],
+      "end_mm": [
+        65.0,
+        34.04
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "SPI_MOSI",
+      "start_mm": [
+        94.0,
+        44.54
+      ],
+      "end_mm": [
+        97.0,
+        44.54
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "SPI_MOSI",
+      "start_mm": [
+        94.0,
+        27.0
+      ],
+      "end_mm": [
+        94.0,
+        44.54
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "SPI_MOSI",
+      "start_mm": [
+        65.0,
+        34.04
+      ],
+      "end_mm": [
+        65.0,
+        23.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "SPI_MOSI",
+      "start_mm": [
+        65.0,
+        23.0
+      ],
+      "end_mm": [
+        92.0,
+        23.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "SPI_MISO",
+      "start_mm": [
+        88.0,
+        47.08
+      ],
+      "end_mm": [
+        97.0,
+        47.08
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "SPI_MISO",
+      "start_mm": [
+        66.0,
+        49.28
+      ],
+      "end_mm": [
+        70.0,
+        47.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "SPI_MISO",
+      "start_mm": [
+        70.0,
+        47.0
+      ],
+      "end_mm": [
+        88.0,
+        47.08
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "SPI_MISO",
+      "start_mm": [
+        61.7,
+        49.28
+      ],
+      "end_mm": [
+        66.0,
+        49.28
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "TFT_CS",
+      "start_mm": [
+        92.0,
+        60.0
+      ],
+      "end_mm": [
+        97.0,
+        57.24
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "TFT_CS",
+      "start_mm": [
+        68.0,
+        69.0
+      ],
+      "end_mm": [
+        82.0,
+        69.0
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "TFT_CS",
+      "start_mm": [
+        61.7,
+        67.06
+      ],
+      "end_mm": [
+        68.0,
+        69.0
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "TFT_CS",
+      "start_mm": [
+        82.0,
+        69.0
+      ],
+      "end_mm": [
+        92.0,
+        60.0
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "TFT_DC",
+      "start_mm": [
+        70.0,
+        64.519999
+      ],
+      "end_mm": [
+        90.0,
+        56.0
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "TFT_DC",
+      "start_mm": [
+        90.0,
+        56.0
+      ],
+      "end_mm": [
+        97.0,
+        54.7
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "TFT_DC",
+      "start_mm": [
+        61.7,
+        64.519999
+      ],
+      "end_mm": [
+        70.0,
+        64.519999
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "TFT_RST",
+      "start_mm": [
+        90.0,
+        60.0
+      ],
+      "end_mm": [
+        104.0,
+        60.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "TFT_RST",
+      "start_mm": [
+        104.0,
+        52.16
+      ],
+      "end_mm": [
+        99.54,
+        52.16
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "TFT_RST",
+      "start_mm": [
+        104.0,
+        60.0
+      ],
+      "end_mm": [
+        104.0,
+        52.16
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "TFT_RST",
+      "start_mm": [
+        61.7,
+        61.98
+      ],
+      "end_mm": [
+        70.0,
+        62.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "TFT_RST",
+      "start_mm": [
+        70.0,
+        62.0
+      ],
+      "end_mm": [
+        90.0,
+        60.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "SD_CS",
+      "start_mm": [
+        88.0,
+        52.16
+      ],
+      "end_mm": [
+        97.0,
+        52.16
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "SD_CS",
+      "start_mm": [
+        61.7,
+        54.36
+      ],
+      "end_mm": [
+        66.0,
+        56.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "SD_CS",
+      "start_mm": [
+        66.0,
+        56.0
+      ],
+      "end_mm": [
+        88.0,
+        52.16
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "SCREEN_BUTTON",
+      "start_mm": [
+        104.0,
+        74.0
+      ],
+      "end_mm": [
+        106.0,
+        74.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.3
+    },
+    {
+      "net": "SCREEN_BUTTON",
+      "start_mm": [
+        106.0,
+        74.0
+      ],
+      "end_mm": [
+        106.0,
+        34.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.3
+    },
+    {
+      "net": "SCREEN_BUTTON",
+      "start_mm": [
+        27.0,
+        41.66
+      ],
+      "end_mm": [
+        27.0,
+        74.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.3
+    },
+    {
+      "net": "SCREEN_BUTTON",
+      "start_mm": [
+        88.0,
+        27.09
+      ],
+      "end_mm": [
+        90.0,
+        27.09
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.3
+    },
+    {
+      "net": "SCREEN_BUTTON",
+      "start_mm": [
+        27.0,
+        74.0
+      ],
+      "end_mm": [
+        33.0,
+        74.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.3
+    },
+    {
+      "net": "SCREEN_BUTTON",
+      "start_mm": [
+        36.3,
+        41.66
+      ],
+      "end_mm": [
+        27.0,
+        41.66
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.3
+    },
+    {
+      "net": "SCREEN_BUTTON",
+      "start_mm": [
+        101.0,
+        34.0
+      ],
+      "end_mm": [
+        101.0,
+        31.0
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.3
+    },
+    {
+      "net": "SCREEN_BUTTON",
+      "start_mm": [
+        33.0,
+        74.0
+      ],
+      "end_mm": [
+        104.0,
+        74.0
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.3
+    },
+    {
+      "net": "SCREEN_BUTTON",
+      "start_mm": [
+        106.0,
+        34.0
+      ],
+      "end_mm": [
+        101.0,
+        34.0
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.3
+    },
+    {
+      "net": "SCREEN_BUTTON",
+      "start_mm": [
+        101.0,
+        31.0
+      ],
+      "end_mm": [
+        101.0,
+        27.0
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.3
+    },
+    {
+      "net": "SCREEN_BUTTON",
+      "start_mm": [
+        101.0,
+        27.0
+      ],
+      "end_mm": [
+        88.0,
+        27.09
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.3
+    },
+    {
+      "net": "BAT_RAW",
+      "start_mm": [
+        59.0,
+        83.0
+      ],
+      "end_mm": [
+        63.09,
+        83.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.5
+    },
+    {
+      "net": "BAT_RAW",
+      "start_mm": [
+        57.0,
+        85.0
+      ],
+      "end_mm": [
+        59.0,
+        83.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.5
+    },
+    {
+      "net": "BATTERY_SENSE",
+      "start_mm": [
+        66.5,
+        87.0
+      ],
+      "end_mm": [
+        69.05,
+        87.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "BATTERY_SENSE",
+      "start_mm": [
+        64.91,
+        83.0
+      ],
+      "end_mm": [
+        69.09,
+        83.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "BATTERY_SENSE",
+      "start_mm": [
+        64.91,
+        83.0
+      ],
+      "end_mm": [
+        66.5,
+        87.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "BATTERY_SENSE",
+      "start_mm": [
+        64.91,
+        83.0
+      ],
+      "end_mm": [
+        66.0,
+        80.0
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "BATTERY_SENSE",
+      "start_mm": [
+        31.0,
+        44.2
+      ],
+      "end_mm": [
+        36.3,
+        44.2
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "BATTERY_SENSE",
+      "start_mm": [
+        66.0,
+        80.0
+      ],
+      "end_mm": [
+        31.0,
+        80.0
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.4
+    },
+    {
+      "net": "BATTERY_SENSE",
+      "start_mm": [
+        31.0,
+        80.0
+      ],
+      "end_mm": [
+        31.0,
+        44.2
+      ],
+      "layer": "B.Cu",
+      "width_mm": 0.4
+    }
+  ],
+  "vias": [
+    {
+      "net": "+3V3",
+      "xy_mm": [
+        84.0,
+        33.0
+      ],
+      "diameter_mm": 0.8
+    },
+    {
+      "net": "SCREEN_BUTTON",
+      "xy_mm": [
+        104.0,
+        74.0
+      ],
+      "diameter_mm": 0.8
+    },
+    {
+      "net": "SCREEN_BUTTON",
+      "xy_mm": [
+        106.0,
+        34.0
+      ],
+      "diameter_mm": 0.8
+    },
+    {
+      "net": "SCREEN_BUTTON",
+      "xy_mm": [
+        33.0,
+        74.0
+      ],
+      "diameter_mm": 0.8
+    },
+    {
+      "net": "SCREEN_BUTTON",
+      "xy_mm": [
+        88.0,
+        27.09
+      ],
+      "diameter_mm": 0.8
+    },
+    {
+      "net": "BATTERY_SENSE",
+      "xy_mm": [
+        66.0,
+        80.0
+      ],
+      "diameter_mm": 0.8
+    }
+  ],
+  "graphics": [
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "User.Drawings",
+      "start_mm": [
+        33.0,
+        24.0
+      ],
+      "end_mm": [
+        65.0,
+        24.0
+      ],
+      "width_mm": 0.25
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "User.Drawings",
+      "start_mm": [
+        33.0,
+        24.0
+      ],
+      "end_mm": [
+        65.0,
+        24.0
+      ],
+      "width_mm": 0.28
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "User.Drawings",
+      "start_mm": [
+        33.0,
+        36.0
+      ],
+      "end_mm": [
+        33.0,
+        24.0
+      ],
+      "width_mm": 0.25
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "User.Drawings",
+      "start_mm": [
+        33.0,
+        78.5
+      ],
+      "end_mm": [
+        33.0,
+        24.0
+      ],
+      "width_mm": 0.28
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "User.Drawings",
+      "start_mm": [
+        41.0,
+        73.5
+      ],
+      "end_mm": [
+        57.0,
+        73.5
+      ],
+      "width_mm": 0.2
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "User.Drawings",
+      "start_mm": [
+        41.0,
+        81.0
+      ],
+      "end_mm": [
+        41.0,
+        73.5
+      ],
+      "width_mm": 0.2
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "User.Drawings",
+      "start_mm": [
+        57.0,
+        73.5
+      ],
+      "end_mm": [
+        57.0,
+        81.0
+      ],
+      "width_mm": 0.2
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "User.Drawings",
+      "start_mm": [
+        57.0,
+        81.0
+      ],
+      "end_mm": [
+        41.0,
+        81.0
+      ],
+      "width_mm": 0.2
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "User.Drawings",
+      "start_mm": [
+        65.0,
+        24.0
+      ],
+      "end_mm": [
+        65.0,
+        36.0
+      ],
+      "width_mm": 0.25
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "User.Drawings",
+      "start_mm": [
+        65.0,
+        24.0
+      ],
+      "end_mm": [
+        65.0,
+        78.5
+      ],
+      "width_mm": 0.28
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "User.Drawings",
+      "start_mm": [
+        65.0,
+        36.0
+      ],
+      "end_mm": [
+        33.0,
+        36.0
+      ],
+      "width_mm": 0.25
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "User.Drawings",
+      "start_mm": [
+        65.0,
+        78.5
+      ],
+      "end_mm": [
+        33.0,
+        78.5
+      ],
+      "width_mm": 0.28
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "User.Drawings",
+      "start_mm": [
+        69.5,
+        41.0
+      ],
+      "end_mm": [
+        94.5,
+        41.0
+      ],
+      "width_mm": 0.2
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "User.Drawings",
+      "start_mm": [
+        69.5,
+        59.0
+      ],
+      "end_mm": [
+        69.5,
+        41.0
+      ],
+      "width_mm": 0.2
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "User.Drawings",
+      "start_mm": [
+        70.5,
+        22.5
+      ],
+      "end_mm": [
+        94.0,
+        22.5
+      ],
+      "width_mm": 0.2
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "User.Drawings",
+      "start_mm": [
+        70.5,
+        38.5
+      ],
+      "end_mm": [
+        70.5,
+        22.5
+      ],
+      "width_mm": 0.2
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "User.Drawings",
+      "start_mm": [
+        94.0,
+        22.5
+      ],
+      "end_mm": [
+        94.0,
+        38.5
+      ],
+      "width_mm": 0.2
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "User.Drawings",
+      "start_mm": [
+        94.0,
+        38.5
+      ],
+      "end_mm": [
+        70.5,
+        38.5
+      ],
+      "width_mm": 0.2
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "User.Drawings",
+      "start_mm": [
+        94.5,
+        41.0
+      ],
+      "end_mm": [
+        94.5,
+        59.0
+      ],
+      "width_mm": 0.2
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "User.Drawings",
+      "start_mm": [
+        94.5,
+        59.0
+      ],
+      "end_mm": [
+        69.5,
+        59.0
+      ],
+      "width_mm": 0.2
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "Edge.Cuts",
+      "start_mm": [
+        20.0,
+        23.0
+      ],
+      "end_mm": [
+        23.0,
+        20.0
+      ],
+      "width_mm": 0.2
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "Edge.Cuts",
+      "start_mm": [
+        20.0,
+        87.0
+      ],
+      "end_mm": [
+        20.0,
+        23.0
+      ],
+      "width_mm": 0.2
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "Edge.Cuts",
+      "start_mm": [
+        23.0,
+        20.0
+      ],
+      "end_mm": [
+        107.0,
+        20.0
+      ],
+      "width_mm": 0.2
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "Edge.Cuts",
+      "start_mm": [
+        23.0,
+        90.0
+      ],
+      "end_mm": [
+        20.0,
+        87.0
+      ],
+      "width_mm": 0.2
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "Edge.Cuts",
+      "start_mm": [
+        107.0,
+        20.0
+      ],
+      "end_mm": [
+        110.0,
+        23.0
+      ],
+      "width_mm": 0.2
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "Edge.Cuts",
+      "start_mm": [
+        107.0,
+        90.0
+      ],
+      "end_mm": [
+        23.0,
+        90.0
+      ],
+      "width_mm": 0.2
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "Edge.Cuts",
+      "start_mm": [
+        110.0,
+        23.0
+      ],
+      "end_mm": [
+        110.0,
+        87.0
+      ],
+      "width_mm": 0.2
+    },
+    {
+      "type": "shape",
+      "shape": 0,
+      "layer": "Edge.Cuts",
+      "start_mm": [
+        110.0,
+        87.0
+      ],
+      "end_mm": [
+        107.0,
+        90.0
+      ],
+      "width_mm": 0.2
+    },
+    {
+      "type": "text",
+      "text": "5V POWER",
+      "layer": "F.Silkscreen",
+      "xy_mm": [
+        34.5,
+        89.0
+      ],
+      "size_mm": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "type": "text",
+      "text": "ANTENNA KEEP-OUT",
+      "layer": "F.Silkscreen",
+      "xy_mm": [
+        49.0,
+        29.8
+      ],
+      "size_mm": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "type": "text",
+      "text": "USB ACCESS",
+      "layer": "F.Silkscreen",
+      "xy_mm": [
+        49.0,
+        76.5
+      ],
+      "size_mm": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "type": "text",
+      "text": "BAT SENSE",
+      "layer": "F.Silkscreen",
+      "xy_mm": [
+        57.0,
+        89.0
+      ],
+      "size_mm": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "type": "text",
+      "text": "VDD",
+      "layer": "F.Silkscreen",
+      "xy_mm": [
+        72.5,
+        25.5
+      ],
+      "size_mm": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "type": "text",
+      "text": "SDA",
+      "layer": "F.Silkscreen",
+      "xy_mm": [
+        72.5,
+        28.04
+      ],
+      "size_mm": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "type": "text",
+      "text": "GND",
+      "layer": "F.Silkscreen",
+      "xy_mm": [
+        72.5,
+        30.58
+      ],
+      "size_mm": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "type": "text",
+      "text": "SCL",
+      "layer": "F.Silkscreen",
+      "xy_mm": [
+        72.5,
+        33.119999
+      ],
+      "size_mm": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "type": "text",
+      "text": "+Y ^",
+      "layer": "F.Silkscreen",
+      "xy_mm": [
+        82.0,
+        40.0
+      ],
+      "size_mm": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "type": "text",
+      "text": "MPU6050 GY-521",
+      "layer": "F.Silkscreen",
+      "xy_mm": [
+        82.0,
+        57.5
+      ],
+      "size_mm": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "type": "text",
+      "text": "VENT EDGE",
+      "layer": "F.Silkscreen",
+      "xy_mm": [
+        82.3,
+        21.5
+      ],
+      "size_mm": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "type": "text",
+      "text": "AHT20 + BMP280",
+      "layer": "F.Silkscreen",
+      "xy_mm": [
+        82.3,
+        37.0
+      ],
+      "size_mm": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "type": "text",
+      "text": "+X ->",
+      "layer": "F.Silkscreen",
+      "xy_mm": [
+        89.0,
+        53.0
+      ],
+      "size_mm": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "type": "text",
+      "text": "SL-1  |  2026",
+      "layer": "F.Silkscreen",
+      "xy_mm": [
+        91.0,
+        87.0
+      ],
+      "size_mm": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "type": "text",
+      "text": "PIN 1",
+      "layer": "F.Silkscreen",
+      "xy_mm": [
+        93.0,
+        40.3
+      ],
+      "size_mm": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "type": "text",
+      "text": "TRISHAN BISWAS",
+      "layer": "F.Silkscreen",
+      "xy_mm": [
+        96.0,
+        22.0
+      ],
+      "size_mm": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "type": "text",
+      "text": "2x7 IDC",
+      "layer": "F.Silkscreen",
+      "xy_mm": [
+        106.0,
+        62.0
+      ],
+      "size_mm": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "type": "text",
+      "text": "TFT + SD",
+      "layer": "F.Silkscreen",
+      "xy_mm": [
+        108.0,
+        50.0
+      ],
+      "size_mm": [
+        0.8,
+        0.8
+      ]
+    },
+    {
+      "type": "text",
+      "text": "ESP32 DEVKIT 30-PIN",
+      "layer": "F.Silkscreen",
+      "xy_mm": [
+        49.0,
+        26.5
+      ],
+      "size_mm": [
+        0.9,
+        0.9
+      ]
+    },
+    {
+      "type": "text",
+      "text": "STRATOLOGGER",
+      "layer": "F.Silkscreen",
+      "xy_mm": [
+        91.0,
+        84.5
+      ],
+      "size_mm": [
+        1.35,
+        1.35
+      ]
+    }
+  ],
+  "limits": [
+    "Pad assignments and firmware mapping only; run KiCad DRC separately.",
+    "No measured module dimensions, physical operation or signal-integrity measurement.",
+    "Ground connectivity is checked by filled-zone DRC; this export omits zone polygons."
+  ]
+}

@@ -10,6 +10,7 @@ from __future__ import annotations
 import re
 import unittest
 import xml.etree.ElementTree as element_tree
+import zipfile
 from pathlib import Path
 
 
@@ -29,6 +30,11 @@ class RepositoryTests(unittest.TestCase):
             "electrical/netlist.csv",
             "electrical/wiring-diagram.svg",
             "mechanical/enclosure.scad",
+            "pcb/SL-1/Stratologger_SL1.kicad_pcb",
+            "pcb/SL-1/generate_stratologger_pcb.py",
+            "pcb/SL-1/manufacturing/Stratologger_SL1-fabrication.zip",
+            "pcb/SL-1/manufacturing/Stratologger_SL1-drc.rpt",
+            "pcb/SL-1/manufacturing/assembly-bom.csv",
             "data/format-example.csv",
             "docs/validation.md",
         )
@@ -58,6 +64,8 @@ class RepositoryTests(unittest.TestCase):
             *ROOT.glob("src/**/*.h"),
             *ROOT.glob("src/**/*.cpp"),
             *ROOT.glob("tools/*.py"),
+            *ROOT.glob("pcb/**/*.py"),
+            *ROOT.glob("pcb/**/*.ps1"),
             ROOT / "mechanical" / "enclosure.scad",
         ]
         for source in source_files:
@@ -82,6 +90,28 @@ class RepositoryTests(unittest.TestCase):
                 if marker in text:
                     matches.append(f"{path.relative_to(ROOT)}: {marker}")
         self.assertEqual(matches, [])
+
+    def test_sl1_fabrication_package(self) -> None:
+        package = ROOT / "pcb" / "SL-1" / "manufacturing" / "Stratologger_SL1-fabrication.zip"
+        required = {
+            "Stratologger_SL1-F_Cu.gtl",
+            "Stratologger_SL1-B_Cu.gbl",
+            "Stratologger_SL1-F_Mask.gts",
+            "Stratologger_SL1-B_Mask.gbs",
+            "Stratologger_SL1-F_Silkscreen.gto",
+            "Stratologger_SL1-B_Silkscreen.gbo",
+            "Stratologger_SL1-Edge_Cuts.gm1",
+            "Stratologger_SL1-PTH.drl",
+            "Stratologger_SL1-NPTH.drl",
+        }
+        with zipfile.ZipFile(package) as archive:
+            self.assertTrue(required.issubset(set(archive.namelist())))
+
+        report = (ROOT / "pcb" / "SL-1" / "manufacturing" / "Stratologger_SL1-drc.rpt").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("Found 0 DRC violations", report)
+        self.assertIn("Found 0 unconnected pads", report)
 
 
 if __name__ == "__main__":

@@ -3,8 +3,8 @@
 ## Physical validation is pending
 
 The source code, wiring documents, and enclosure model do not by themselves prove that
-the assembled payload works. The current revision has no published breadboard photo,
-perfboard photo, physical enclosure fit, or sensor capture.
+the assembled payload works. The current revision has no fabricated-PCB photograph,
+physical enclosure fit, or sensor capture.
 
 ## Barometric altitude requires calibration
 

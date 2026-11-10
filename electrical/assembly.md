@@ -1,70 +1,90 @@
-# Electrical and perfboard assembly
+# Electrical integration
 
-## Layout strategy
+**Fabrication hold:** the ESP32 socket map below is the legacy assumption, now
+known to differ from the common 30-pin DOIT module. Confirm the actual board before
+rerouting. Do not fabricate or power this carrier on the basis of these socket labels.
+See [the audit](../pcb/SL-1/review/PCB_AUDIT.md).
 
-Use the ESP32 and TFT as removable assemblies on female headers. Put the display in
-the lid and connect it to the main perfboard with a short keyed harness; this keeps
-the TFT a physically replaceable subsystem as well as a separate software module.
+The permanent electrical assembly is based on the custom motherboard in
+[`pcb/SL-1/`](../pcb/SL-1/README.md). The ESP32 and sensor boards plug into female
+headers so a failed module can be replaced without discarding the motherboard.
 
-A practical top-view placement on a roughly 90 x 70 mm perfboard is:
+## Board architecture
 
-```text
- USB/opening edge
- ┌──────────────────────────────────────────────────────────┐
- │ [ESP32 DevKit on sockets]       [TFT/SD harness header]  │
- │                                                          │
- │ [AHT+BMP]  airflow edge          [MPU6050, axes marked]   │
- │                                                          │
- │ [power switch] [5 V boost]       [button/LED/buzzer hdr] │
- │ [battery/charge connector]       [ADC divider + 100 nF]  │
- └──────────────────────────────────────────────────────────┘
-```
+| Area | Implementation |
+|---|---|
+| Controller | Socketed 30-pin ESP32 DevKit V1 with USB access at the enclosure edge |
+| Environmental sensing | AHT20/BMP280 on a 1x4 male header at the ventilated edge |
+| Inertial sensing | Socketed GY-521 near the payload's mechanical centre with axes marked |
+| Display and storage | Lid-mounted ST7789V/microSD assembly connected through a keyed 2x7 harness |
+| User interface | Enclosure-mounted screen button connected through a two-pin header |
+| Power | USB through the ESP32 or protected regulated 5 V through a fused, diode-isolated input |
+| Battery measurement | Separate protected-cell sense input and 100 kOhm / 100 kOhm ADC divider |
+| Service access | Socketed modules and labelled connectors remain directly probeable |
 
-Place the BMP280/AHT20 at a vented enclosure edge, away from the ESP32 regulator,
-boost converter, TFT backlight and battery. Place the MPU6050 near the enclosure's
-mechanical centre, flat and square to the intended X/Y axes. Label those axes on the
-board and enclosure before calibration.
+The SL-1 outline is 90 by 70 mm with four 3.2 mm mounting holes. The
+environmental sensor and ESP32 antenna areas are kept clear for the enclosure vent
+and radio path respectively.
 
-## Suggested construction order
+The present J1/J2 assignments are a legacy map and do not match the common 30-pin
+DOIT DevKit V1. Do not fabricate or power this board until the exact ESP32 pin order
+is confirmed and the socket map and routing are corrected. The 25.4 mm socket-row
+pitch and approximate 32 mm body guide do not confirm fit; measure the exact board,
+including body width, header offsets, USB connector and antenna edge.
 
-1. Print the netlist and continuity-check the unpowered perfboard rails.
-2. Fit sockets and headers. Do not permanently solder the ESP32, sensors or TFT.
-3. Build GND and 3V3 rails with wire thick enough for the load; add 100 uF bulk
-   capacitance and one 100 nF capacitor at each sensor/display connector.
-4. Wire I2C as a short daisy chain. Check whether both breakout boards include
-   pull-ups; their parallel value should normally remain above about 2 kohm.
-5. Wire the three shared VSPI lines, then the separate TFT and SD control lines.
-   Keep SCK short, avoid large loops, and route a ground conductor with the TFT loom.
-6. Add the GPIO34 button and its physical 10 kohm pull-up to 3V3.
-7. Add the battery divider: protected BAT+ to 100 kohm, midpoint to GPIO35, then
-   100 kohm and 100 nF in parallel from midpoint to GND.
-8. Fit LED and passive piezo. If the buzzer is magnetic or draws more than roughly
-   8 mA, drive it with an NPN transistor/MOSFET and a base/gate resistor instead.
-9. Build and verify the protected-cell/charger/boost section separately. Adjust it
-   to 5.0 V before connecting `VIN`.
-10. Inspect for solder bridges, then continuity-test every row of `netlist.csv`
-    with the ESP32 and battery removed.
+## Remote TFT connection
 
-## TFT harness
+The keyed 2x7 motherboard connector carries:
 
-Fourteen-pin ST7789 boards do not use a universal pin order. Match the silk-screened
-**signal names**, not physical pin numbers. Some boards label MOSI as SDA or DIN and
-SCK as SCL/CLK. The display and SD socket share SCK/MOSI; the SD socket must also
-return MISO. Keep both CS wires distinct and never tie them low.
+| Pin | Signal | Pin | Signal |
+|---:|---|---:|---|
+| 1 | 3.3 V / TFT VCC | 2 | GND |
+| 3 | SPI MOSI | 4 | GND |
+| 5 | SPI MISO | 6 | GND |
+| 7 | SPI SCK | 8 | GND |
+| 9 | SD CS | 10 | TFT RST |
+| 11 | TFT DC | 12 | 3.3 V / backlight |
+| 13 | TFT CS | 14 | GND |
 
-## Bring-up checkpoints
+Fourteen-pin ST7789 boards do not use a universal header order. The display harness
+must therefore be mapped from these signal names to the exact silk labels on the
+module. TFT and SD share SCK, MOSI and MISO, while their chip-select lines stay
+separate. Keep the harness no longer than 100 mm; the interleaved ground conductors
+are part of the design, not spare wires.
 
-Power each stage from a current-limited USB supply first:
+On the current display, the first five male pins (`T_IRQ`, `T_DO`, `T_DIN`, `T_CS`
+and `T_CLK`) are unused touch signals. The remaining display pins connect by signal
+name. The four female `SD_*` pins expose the TFT board's built-in card socket and can
+receive the shared SPI lines plus GPIO5 for `SD_CS`.
 
-- Bare power board: 3.3 V and 5 V rails in tolerance, no heating.
-- ESP32 only: serial boot and upload reliable.
-- I2C only: addresses 0x38, 0x68, and BMP280 at 0x76 or 0x77.
-- TFT only: boot message has correct rotation and colour. If red/blue are swapped,
-  add `-D TFT_RGB_ORDER=TFT_BGR` to `platformio.ini`.
-- SD only: a new log appears after every reset and older files remain intact.
-- Full assembly: test from USB, then from the standalone supply.
+The standalone TF-card reader is not fitted on SL-1. Use the TFT board's built-in
+socket for logging.
 
-Measure the actual cell voltage with a multimeter and adjust
-`BATTERY_CALIBRATION` until the System screen agrees. Secure the battery mechanically;
-do not rely on solder joints or wires to restrain it during the drop test.
+## Power boundaries
 
+The motherboard accepts **regulated 5 V only** at its external power connector. A
+resettable fuse limits input faults and the Schottky diode blocks reverse current
+toward the external supply. This does not establish USB power-source isolation on
+an unknown DevKit clone. Use only one power source at a time until the exact
+DevKit power schematic is verified. Raw Li-ion or LiPo voltage is not a motherboard power input.
+
+J7 (`5V POWER`) is a two-wire input: regulated `+5 V` and `GND`. F1 is a 750 mA
+resettable PTC fuse in series with that input; it trips under sustained overload and
+recovers after the fault is removed. It is not a switch or charger. Use a matching
+JST-XH 2-pin pigtail or soldered, strain-relieved 22–24 AWG wires. The board uses a
+JST-XH footprint, so a Dupont jumper does not mate with it reliably.
+
+J8 (`BAT SENSE`) is a separate, measurement-only two-wire input: protected single-cell
+`BAT+` and `GND`. The 100 kOhm / 100 kOhm divider feeds GPIO35 at half the cell
+voltage. It supports a 1-cell Li-ion/LiPo pack (about 3.2–4.2 V), not a 2-cell pack.
+It does not power the payload. Power the payload from a regulated 5 V boost converter
+connected to J7; connect the cell to J8 for voltage measurement. Use a second JST-XH
+pigtail or soldered, strain-relieved pair and observe polarity. Grounds are common on
+the PCB, but keep each connector's pair together in the wiring.
+
+## Before ordering
+
+Print the board at 1:1 scale from KiCad and place the exact ESP32, AHT20/BMP280 and
+GY-521 modules over it. Confirm row spacing, header order, body overhang, USB access
+and installed height. The routed board passes KiCad DRC, but generic breakout-board
+dimensions are not controlled by SL-1 and still require this physical fit check.

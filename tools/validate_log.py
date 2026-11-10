@@ -42,7 +42,13 @@ def lround_away_from_zero(value: float) -> int:
 def scaled_u32(value: float, scale: float) -> int:
     if not math.isfinite(value):
         return 0x80000000
-    return lround_away_from_zero(value * scale) & 0xFFFFFFFF
+    scaled = value * scale
+    if not math.isfinite(scaled):
+        raise ValueError("measurement exceeds the checksum range")
+    rounded = lround_away_from_zero(scaled)
+    if not -(2**31) <= rounded < 2**31:
+        raise ValueError("measurement exceeds the checksum range")
+    return rounded & 0xFFFFFFFF
 
 
 def checksum_for(packet_id: int, timestamp_ms: int, values: list[float]) -> int:
@@ -98,7 +104,13 @@ def validate(path: Path, *, verbose: bool = True) -> tuple[int, int]:
                     print(f"ERROR line {line_number}: invalid value ({exc})")
                 continue
 
-            expected = checksum_for(packet_id, timestamp, values)
+            try:
+                expected = checksum_for(packet_id, timestamp, values)
+            except ValueError as exc:
+                errors += 1
+                if verbose:
+                    print(f"ERROR line {line_number}: {exc}")
+                continue
             if recorded != expected:
                 errors += 1
                 if verbose:

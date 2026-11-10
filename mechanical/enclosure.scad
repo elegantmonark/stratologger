@@ -18,24 +18,22 @@ floor_t = 2.4;
 corner_r = 6;
 clearance = 0.30;       // Per side for the lid locating lip.
 
-// Nominal perfboard and mounting geometry.
-perf_x = 90;
-perf_y = 65;
-perf_origin = [9, 13];
-perf_hole_inset = 3;
-standoff_od = 7;
-standoff_hole = 2.7;    // M2.5 clearance; tune for printer.
+// Nominal SL-1 PCB and mounting geometry.
+pcb_x = 90;
+pcb_y = 70;
+pcb_origin = [8, 11];
+pcb_hole_inset = 4.5;
+standoff_od = 8;
+standoff_hole = 3.2;    // M3 clearance; tune for printer.
 standoff_h = 5;
 
 // Lid interfaces; dimensions are intentionally easy to calibrate.
 display_window = [50.5, 38.5];
-display_center = [43, 48];
+display_center = [case_x/2, case_y/2];
 tft_hole_spacing = [58, 45];
 tft_screw_hole = 2.4;
 button_center = [108, 58];
 button_hole_d = 7.2;
-buzzer_center = [108, 29];
-vent_hole_d = 2.2;
 
 // Side openings in the base.
 usb_cutout_width = 14;
@@ -92,16 +90,16 @@ module base() {
     union() {
         hollow_base();
 
-        // Perfboard mounting points.
-        for (x = [perf_origin[0] + perf_hole_inset,
-                  perf_origin[0] + perf_x - perf_hole_inset])
-            for (y = [perf_origin[1] + perf_hole_inset,
-                      perf_origin[1] + perf_y - perf_hole_inset])
+        // SL-1 PCB mounting points.
+        for (x = [pcb_origin[0] + pcb_hole_inset,
+                  pcb_origin[0] + pcb_x - pcb_hole_inset])
+            for (y = [pcb_origin[1] + pcb_hole_inset,
+                      pcb_origin[1] + pcb_y - pcb_hole_inset])
                 screw_standoff([x, y]);
 
         // Simple end stops for a removable 18650 holder in the right-side bay.
-        translate([108, 10, floor_t]) cube([3, 18, 5]);
-        translate([126, 10, floor_t]) cube([3, 18, 5]);
+        translate([111, 9, floor_t]) cube([18, 3, 5]);
+        translate([111, 80, floor_t]) cube([18, 3, 5]);
     }
 }
 
@@ -124,13 +122,6 @@ module lid_plate() {
         translate([button_center[0], button_center[1], -1])
             cylinder(d=button_hole_d, h=lid_z + 2);
 
-        // Circular buzzer vent pattern.
-        translate([buzzer_center[0], buzzer_center[1], -1])
-            cylinder(d=vent_hole_d, h=lid_z + 2);
-        for (angle = [0:60:300])
-            translate([buzzer_center[0] + 6*cos(angle),
-                       buzzer_center[1] + 6*sin(angle), -1])
-                cylinder(d=vent_hole_d, h=lid_z + 2);
     }
 }
 

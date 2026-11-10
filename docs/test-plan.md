@@ -5,7 +5,7 @@ ambient pressure and test operator in the logbook for every run.
 
 ## Bench acceptance
 
-- Confirm three-beep boot and each deliberate 1/2/3/4 fault code by unplugging one
+- Confirm the serial/TFT boot result and each deliberate sensor or SD fault by unplugging one
   module at a time with power removed.
 - Power-cycle ten times and confirm ten unique log files with valid headers.
 - Compare both temperatures, pressure and battery voltage with reference instruments.

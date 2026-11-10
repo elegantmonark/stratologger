@@ -1,0 +1,15 @@
+Reference,Quantity,Value,Package,Populate,Assembly note
+R2,1,10 kohm 1 percent,0805,Yes,GPIO34 pull-up
+R3-R4,2,100 kohm 1 percent,0805,Yes,Battery divider
+C1,1,100 nF X7R 10 V or higher,0805,Yes,ADC filter
+C2,1,100 uF 6.3 V low ESR,Radial 6.3 mm body 2.5 mm pitch,Yes,Observe polarity
+C3,1,100 nF X7R 10 V or higher,0805,Yes,Environmental sensor decoupling
+F1,1,750 mA resettable PTC,1812,Yes,External 5 V input protection
+D1,1,SS34,SMA,Yes,Observe cathode marking
+J1-J2,2,1x15 female socket,2.54 mm vertical,Yes,ESP32 row spacing is 25.4 mm
+J3,1,1x4 male header,2.54 mm vertical,Yes,VDD SDA GND SCL from pin 1
+J4,1,1x8 female socket,2.54 mm vertical,Yes,GY-521 socket
+J5,1,2x7 keyed box header,2.54 mm vertical,Yes,Align pin-1 triangle with PCB mark
+J6,1,1x2 male header,2.54 mm vertical,Yes,Remote screen button
+J7-J8,2,JST-XH 2-pin header,2.50 mm vertical,Yes,Check polarity before mating
+H1-H4,4,M3 clearance hole,3.2 mm NPTH,N/A,No component

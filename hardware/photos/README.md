@@ -6,10 +6,10 @@ Use descriptive filenames when evidence becomes available:
 
 ```text
 modules-with-headers.jpeg
-breadboard-overview.jpeg
-breadboard-tft-closeup.jpeg
-perfboard-component-side.jpeg
-perfboard-solder-side.jpeg
+pcb-bare-top.jpeg
+pcb-assembled-top.jpeg
+pcb-assembled-bottom.jpeg
+integrated-payload.jpeg
 enclosure-fit-check.jpeg
 ```
 

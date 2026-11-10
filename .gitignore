@@ -17,6 +17,10 @@ __pycache__/
 .pytest_cache/
 .DS_Store
 Thumbs.db
+.history/
+*.kicad_prl
+*.kicad_sch-bak
+*-backups/
 
 # New hardware captures remain local until they have been reviewed.
 data/runs/

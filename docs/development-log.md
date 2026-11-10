@@ -18,7 +18,7 @@ The first repository baseline established:
 - sensor acquisition for the AHT20, BMP280, and MPU6050;
 - 500 ms CSV logging with non-overwriting filenames and per-row checksums;
 - three display screens for live telemetry, IMU detail, and system status;
-- LED and buzzer boot diagnostics;
+- TFT and serial boot-fault reporting;
 - an electrical BOM, netlist, and signal-level wiring diagram;
 - a parametric two-part PETG enclosure; and
 - host-side validation for CSV structure, sequence, timestamps, and checksums.
@@ -29,8 +29,14 @@ mission test is claimed without a corresponding photograph, log, or measurement.
 
 ## Current direction
 
-The next engineering stage is staged physical bring-up: bare ESP32 upload, I2C sensor
-verification, shared-SPI display and SD verification, controls, then an extended USB
-bench run. Perfboard transfer and enclosure fitting follow only after that configuration
-is stable.
+The breadboard and perfboard stages were replaced by a custom motherboard. SL-1 uses
+socketed modules, a keyed 2x7 TFT/SD harness, protected regulated-power input, battery
+sensing and four M3 mounting holes within a 90 by 70 mm outline.
+
+SL-1 is routed with two ground planes and an ESP32 antenna keep-out. KiCad reports
+zero DRC violations, zero unconnected pads and zero footprint errors. Gerber and drill
+files exist as historical outputs. Fabrication is blocked by the ESP32 socket-map
+mismatch recorded in the [PCB audit](../pcb/SL-1/review/PCB_AUDIT.md). Confirm the
+exact module pinout and dimensions, correct the mapping and routing, then regenerate
+and review the manufacturing package. Hardware operation requires assembly and bench testing.
 

@@ -12,7 +12,6 @@
 #include <algorithm>
 
 #include "config.h"
-#include "indicators/StatusIndicators.h"
 #include "sensors/SensorManager.h"
 #include "storage/TelemetryLogger.h"
 #include "telemetry_types.h"
@@ -22,8 +21,6 @@ namespace {
 SensorManager sensors;
 TelemetryLogger logger;
 DisplayManager display;
-StatusIndicators indicators;
-
 TelemetrySample latest;
 SystemStats stats;
 UiScreen currentScreen = UiScreen::Live;
@@ -78,7 +75,6 @@ void refreshStats(uint32_t now) {
 
 void setup() {
   Serial.begin(Config::SERIAL_BAUD);
-  indicators.begin();
 
   pinMode(Config::PIN_SCREEN_BUTTON, INPUT);  // GPIO34 has no internal pull-up.
   pinMode(Config::PIN_BATTERY_ADC, INPUT);
@@ -98,17 +94,18 @@ void setup() {
 
   if (faults != FAULT_NONE) {
     Serial.printf("Boot fault mask: 0x%02X\n", faults);
-    indicators.faultLoop(faults);
+    if (!(faults & FAULT_DISPLAY)) {
+      display.showBootMessage("BOOT FAULT - CHECK SERIAL");
+    }
+    while (true) delay(250);
   }
 
-  indicators.allOkMelody();
   nextSampleMs = millis();
   lastSpaceRefreshMs = millis() - 10000UL;
 }
 
 void loop() {
   const uint32_t now = millis();
-  indicators.update();
   updateButton(now);
 
   if (static_cast<int32_t>(now - nextSampleMs) < 0) {
@@ -139,6 +136,5 @@ void loop() {
   stats.peakG = std::max(stats.peakG, latest.accelMagnitudeG);
   refreshStats(now);
   display.render(latest, stats, currentScreen);
-  indicators.heartbeat();
 }
 

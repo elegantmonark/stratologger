@@ -7,8 +7,8 @@ planned layouts.
 | Build stage | Published state |
 |---|---|
 | Modules with fitted headers | No photograph published |
-| USB-powered breadboard | No photograph published |
-| Perfboard assembly | Not assembled |
+| SL-1 PCB | Routing passes DRC; fabrication blocked pending ESP32 socket-map correction and physical fit checks |
+| Assembled motherboard | Not assembled |
 | Standalone power system | Not validated |
 | Enclosure fit | Not validated |
 

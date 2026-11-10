@@ -1,0 +1,13 @@
+{
+  "fabrication_approved": false,
+  "status": "BLOCKED_PENDING_MODULE_PINOUT",
+  "review_date": "2026-10-27",
+  "reason": "The legacy J1/J2 map does not match the common 30-pin DOIT DevKit V1. Confirm the exact physical module, correct the socket assignments and reroute before ordering.",
+  "required_before_release": [
+    "Confirm both complete ESP32 header rows with USB at bottom and component side facing up.",
+    "Measure socket row spacing and check every module against a 1:1 board print.",
+    "Correct the socket map, routing and independent audit expectations.",
+    "Review supply delivery, display module supply requirements and shared MISO behaviour.",
+    "Run the pin audit and filled-zone DRC, then review the regenerated manufacturing previews."
+  ]
+}

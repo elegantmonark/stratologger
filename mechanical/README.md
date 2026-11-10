@@ -1,6 +1,8 @@
 # PETG enclosure
 
-`enclosure.scad` generates a vented base and display lid. It is a parametric first-fit
+`enclosure.scad` generates a vented base and a centred display lid. SL-1 mounts on
+standoffs in the base; the TFT mounts independently beneath the lid and connects by
+a harness no longer than 100 mm. It is a parametric first-fit
 model because generic ESP32 DevKit V1, combo-sensor and 14-pin ST7789 boards do not
 share guaranteed dimensions or mounting-hole locations.
 
@@ -8,8 +10,9 @@ share guaranteed dimensions or mounting-hole locations.
 
 Update the parameter block for:
 
-- perfboard outline, hole inset and installed component height;
+- PCB outline, mounting-hole centres and installed component height;
 - active TFT viewing area and the module's four mounting-hole centres;
+- microSD card insertion direction and the required lid-edge access slot;
 - USB connector centre/height with the ESP32 installed on headers;
 - button bushing diameter and power-switch body;
 - battery holder envelope and wire bend radius.

@@ -1,0 +1,461 @@
+{
+  "created_utc": "2026-11-06T10:58:13.923257+00:00",
+  "data_origin": "synthetic host inputs, not a sensor capture",
+  "python": "3.11.9",
+  "platform": "Windows",
+  "source_sha256": {
+    "include/telemetry_types.h": "fe5a7b6ba030d4b1fb85d6dab717815d312779d54e39e7dacdbae6f231102aea",
+    "include/telemetry_csv.h": "e122b456228f2ea2866d067cf88ff67664904fae66450677e79f7a3fb60a1d36",
+    "src/storage/TelemetryLogger.cpp": "b963ff71f3c43f54be82cf2823e59819bf99e7264a1e127187b890c0de167511",
+    "tests/telemetry_csv_fixture.cpp": "15412ed8d27b39172a4d1cf209ed53640ee57fd5d9890cb8937ee203b68145b5",
+    "tools/validate_log.py": "eb3c651c70ff8b8801aded2c7b9bae4b5f01913fbddb7fe46e4581e84690d2da",
+    "tools/log_audit.py": "656f73280533e7497ca12bd33219c41fe6d3e7d0d366f50658d48eee80ea35d9",
+    "tools/run_log_campaign.py": "9fecc1568cb67eb186ef1cbfa26909862eafabfe544cc97866ed5d294d729992"
+  },
+  "cases": [
+    {
+      "case": "clean_5_minutes",
+      "expectation_met": true,
+      "required_errors": [],
+      "rows": 600,
+      "errors": {},
+      "examples": [],
+      "timestamp_rollovers": 0,
+      "packet_rollovers": 0,
+      "max_interval_ms": 500,
+      "elapsed_ms": 299500,
+      "error_count": 0,
+      "status": "PASS"
+    },
+    {
+      "case": "changed_measurement",
+      "expectation_met": true,
+      "required_errors": [
+        "checksum"
+      ],
+      "rows": 600,
+      "errors": {
+        "checksum": 1
+      },
+      "examples": [
+        "line 102: checksum: expected 00017F6F, got 00017F6E"
+      ],
+      "timestamp_rollovers": 0,
+      "packet_rollovers": 0,
+      "max_interval_ms": 500,
+      "elapsed_ms": 299500,
+      "error_count": 1,
+      "status": "FAIL"
+    },
+    {
+      "case": "dropped_packet",
+      "expectation_met": true,
+      "required_errors": [
+        "packet_gap",
+        "timing_gap"
+      ],
+      "rows": 599,
+      "errors": {
+        "packet_gap": 1,
+        "timing_gap": 1
+      },
+      "examples": [
+        "line 102: packet_gap: 100 to 102",
+        "line 102: timing_gap: 1000 ms exceeds 750 ms"
+      ],
+      "timestamp_rollovers": 0,
+      "packet_rollovers": 0,
+      "max_interval_ms": 1000,
+      "elapsed_ms": 299500,
+      "error_count": 2,
+      "status": "FAIL"
+    },
+    {
+      "case": "duplicate_packet",
+      "expectation_met": true,
+      "required_errors": [
+        "packet_order",
+        "timestamp_order"
+      ],
+      "rows": 601,
+      "errors": {
+        "packet_order": 1,
+        "timestamp_order": 1
+      },
+      "examples": [
+        "line 102: packet_order: 100 to 100",
+        "line 102: timestamp_order: 50000 to 50000"
+      ],
+      "timestamp_rollovers": 0,
+      "packet_rollovers": 0,
+      "max_interval_ms": 500,
+      "elapsed_ms": 299500,
+      "error_count": 2,
+      "status": "FAIL"
+    },
+    {
+      "case": "reordered_packets",
+      "expectation_met": true,
+      "required_errors": [
+        "packet_order",
+        "timestamp_order"
+      ],
+      "rows": 600,
+      "errors": {
+        "packet_gap": 2,
+        "timing_gap": 2,
+        "packet_order": 1,
+        "timestamp_order": 1
+      },
+      "examples": [
+        "line 102: packet_gap: 100 to 102",
+        "line 102: timing_gap: 1000 ms exceeds 750 ms",
+        "line 103: packet_order: 102 to 101",
+        "line 103: timestamp_order: 51000 to 50500",
+        "line 104: packet_gap: 101 to 103",
+        "line 104: timing_gap: 1000 ms exceeds 750 ms"
+      ],
+      "timestamp_rollovers": 0,
+      "packet_rollovers": 0,
+      "max_interval_ms": 1000,
+      "elapsed_ms": 300000,
+      "error_count": 6,
+      "status": "FAIL"
+    },
+    {
+      "case": "frozen_clock",
+      "expectation_met": true,
+      "required_errors": [
+        "timestamp_order"
+      ],
+      "rows": 600,
+      "errors": {
+        "timestamp_order": 1,
+        "timing_gap": 1
+      },
+      "examples": [
+        "line 102: timestamp_order: 50000 to 50000",
+        "line 103: timing_gap: 1000 ms exceeds 750 ms"
+      ],
+      "timestamp_rollovers": 0,
+      "packet_rollovers": 0,
+      "max_interval_ms": 1000,
+      "elapsed_ms": 299500,
+      "error_count": 2,
+      "status": "FAIL"
+    },
+    {
+      "case": "acquisition_stall",
+      "expectation_met": true,
+      "required_errors": [
+        "timing_gap"
+      ],
+      "rows": 600,
+      "errors": {
+        "timing_gap": 1
+      },
+      "examples": [
+        "line 102: timing_gap: 5500 ms exceeds 750 ms"
+      ],
+      "timestamp_rollovers": 0,
+      "packet_rollovers": 0,
+      "max_interval_ms": 5500,
+      "elapsed_ms": 304500,
+      "error_count": 1,
+      "status": "FAIL"
+    },
+    {
+      "case": "partial_final_row",
+      "expectation_met": true,
+      "required_errors": [
+        "malformed",
+        "truncated"
+      ],
+      "rows": 600,
+      "errors": {
+        "truncated": 1,
+        "malformed": 1
+      },
+      "examples": [
+        "line 0: truncated: file does not end with a newline",
+        "line 601: malformed: expected 13 fields, got 12"
+      ],
+      "timestamp_rollovers": 0,
+      "packet_rollovers": 0,
+      "max_interval_ms": 500,
+      "elapsed_ms": 299000,
+      "error_count": 2,
+      "status": "FAIL"
+    },
+    {
+      "case": "missing_final_newline",
+      "expectation_met": true,
+      "required_errors": [
+        "truncated"
+      ],
+      "rows": 600,
+      "errors": {
+        "truncated": 1
+      },
+      "examples": [
+        "line 0: truncated: file does not end with a newline"
+      ],
+      "timestamp_rollovers": 0,
+      "packet_rollovers": 0,
+      "max_interval_ms": 500,
+      "elapsed_ms": 299500,
+      "error_count": 1,
+      "status": "FAIL"
+    },
+    {
+      "case": "sensor_nan_valid_checksum",
+      "expectation_met": true,
+      "required_errors": [
+        "nonfinite"
+      ],
+      "rows": 600,
+      "errors": {
+        "nonfinite": 1
+      },
+      "examples": [
+        "line 102: nonfinite: sensor field contains NaN or infinity"
+      ],
+      "timestamp_rollovers": 0,
+      "packet_rollovers": 0,
+      "max_interval_ms": 500,
+      "elapsed_ms": 299500,
+      "error_count": 1,
+      "status": "FAIL"
+    },
+    {
+      "case": "humidity_out_of_range",
+      "expectation_met": true,
+      "required_errors": [
+        "range"
+      ],
+      "rows": 600,
+      "errors": {
+        "range": 1
+      },
+      "examples": [
+        "line 102: range: humidity is outside 0 to 100 percent"
+      ],
+      "timestamp_rollovers": 0,
+      "packet_rollovers": 0,
+      "max_interval_ms": 500,
+      "elapsed_ms": 299500,
+      "error_count": 1,
+      "status": "FAIL"
+    },
+    {
+      "case": "packet_integer_overflow",
+      "expectation_met": true,
+      "required_errors": [
+        "malformed"
+      ],
+      "rows": 600,
+      "errors": {
+        "malformed": 1,
+        "packet_gap": 1,
+        "timing_gap": 1
+      },
+      "examples": [
+        "line 102: malformed: expected an unsigned 32 bit integer",
+        "line 103: packet_gap: 100 to 102",
+        "line 103: timing_gap: 1000 ms exceeds 750 ms"
+      ],
+      "timestamp_rollovers": 0,
+      "packet_rollovers": 0,
+      "max_interval_ms": 1000,
+      "elapsed_ms": 299500,
+      "error_count": 3,
+      "status": "FAIL"
+    },
+    {
+      "case": "infinite_reading",
+      "expectation_met": true,
+      "required_errors": [
+        "nonfinite"
+      ],
+      "rows": 600,
+      "errors": {
+        "checksum": 1,
+        "nonfinite": 1
+      },
+      "examples": [
+        "line 102: checksum: expected 800178BE, got 00017F6E",
+        "line 102: nonfinite: sensor field contains NaN or infinity"
+      ],
+      "timestamp_rollovers": 0,
+      "packet_rollovers": 0,
+      "max_interval_ms": 500,
+      "elapsed_ms": 299500,
+      "error_count": 2,
+      "status": "FAIL"
+    },
+    {
+      "case": "scaled_integer_overflow",
+      "expectation_met": true,
+      "required_errors": [
+        "malformed"
+      ],
+      "rows": 600,
+      "errors": {
+        "malformed": 1,
+        "packet_gap": 1,
+        "timing_gap": 1
+      },
+      "examples": [
+        "line 102: malformed: measurement exceeds the checksum range",
+        "line 103: packet_gap: 100 to 102",
+        "line 103: timing_gap: 1000 ms exceeds 750 ms"
+      ],
+      "timestamp_rollovers": 0,
+      "packet_rollovers": 0,
+      "max_interval_ms": 1000,
+      "elapsed_ms": 299500,
+      "error_count": 3,
+      "status": "FAIL"
+    },
+    {
+      "case": "header_only",
+      "expectation_met": true,
+      "required_errors": [
+        "empty"
+      ],
+      "rows": 0,
+      "errors": {
+        "empty": 1
+      },
+      "examples": [
+        "line 0: empty: no data rows"
+      ],
+      "timestamp_rollovers": 0,
+      "packet_rollovers": 0,
+      "max_interval_ms": 0,
+      "elapsed_ms": 0,
+      "error_count": 1,
+      "status": "FAIL"
+    },
+    {
+      "case": "wrong_header",
+      "expectation_met": true,
+      "required_errors": [
+        "header"
+      ],
+      "rows": 600,
+      "errors": {
+        "header": 1
+      },
+      "examples": [
+        "line 1: header: expected the telemetry CSV header"
+      ],
+      "timestamp_rollovers": 0,
+      "packet_rollovers": 0,
+      "max_interval_ms": 500,
+      "elapsed_ms": 299500,
+      "error_count": 1,
+      "status": "FAIL"
+    },
+    {
+      "case": "invalid_encoding",
+      "expectation_met": true,
+      "required_errors": [
+        "malformed"
+      ],
+      "rows": 573,
+      "errors": {
+        "malformed": 1
+      },
+      "examples": [
+        "line 574: malformed: 'ascii' codec can't decode byte 0xff in position 2273: ordinal not in range(128)"
+      ],
+      "timestamp_rollovers": 0,
+      "packet_rollovers": 0,
+      "max_interval_ms": 500,
+      "elapsed_ms": 286000,
+      "error_count": 1,
+      "status": "FAIL"
+    },
+    {
+      "case": "counter_rollovers",
+      "expectation_met": true,
+      "required_errors": [],
+      "rows": 600,
+      "errors": {},
+      "examples": [],
+      "timestamp_rollovers": 1,
+      "packet_rollovers": 1,
+      "max_interval_ms": 500,
+      "elapsed_ms": 299500,
+      "error_count": 0,
+      "status": "PASS"
+    },
+    {
+      "case": "xor_cancellation",
+      "expectation_met": true,
+      "required_errors": [],
+      "rows": 600,
+      "errors": {},
+      "examples": [],
+      "timestamp_rollovers": 0,
+      "packet_rollovers": 0,
+      "max_interval_ms": 500,
+      "elapsed_ms": 299500,
+      "error_count": 0,
+      "status": "PASS"
+    }
+  ],
+  "native_serializer": {
+    "legacy": {
+      "rows": 100000,
+      "errors": {
+        "checksum": 512
+      },
+      "examples": [
+        "line 205: checksum: expected FFFFCEED, got FFFFCEEC",
+        "line 266: checksum: expected FFFC431A, got FFFC431B",
+        "line 269: checksum: expected FFFC4DED, got FFFC4DEC",
+        "line 464: checksum: expected 00022232, got 00022233",
+        "line 603: checksum: expected FFFAD484, got FFFAD487",
+        "line 902: checksum: expected 000776B1, got 000776B0",
+        "line 1193: checksum: expected 0008ADA7, got 0008ADA4",
+        "line 1217: checksum: expected 0008F287, got 0008F286",
+        "line 1343: checksum: expected FFF47D3E, got FFF47D3F",
+        "line 1356: checksum: expected FFF41544, got FFF41543",
+        "line 1562: checksum: expected 000A5AED, got 000A5A92",
+        "line 1583: checksum: expected 000DA214, got 000DA215",
+        "line 1796: checksum: expected FFF3F071, got FFF3F070",
+        "line 2052: checksum: expected FFF1F6FC, got FFF1F6FB",
+        "line 2280: checksum: expected 0010DD9D, got 0010DD9C",
+        "line 2300: checksum: expected 001032C4, got 001032C3",
+        "line 2312: checksum: expected 00101890, got 00101891",
+        "line 2331: checksum: expected 00107879, got 0010787E",
+        "line 2563: checksum: expected FFEDDD51, got FFEDDD4E",
+        "line 2720: checksum: expected 001504B1, got 001504B2"
+      ],
+      "timestamp_rollovers": 0,
+      "packet_rollovers": 0,
+      "max_interval_ms": 500,
+      "elapsed_ms": 49999500,
+      "error_count": 512,
+      "status": "FAIL",
+      "validation_seconds": 0.7177780999336392,
+      "input_sha256": "175b9842823b91a3a48e667e7cfe784f24dd1387c02939998dbd57741c89516d"
+    },
+    "current": {
+      "rows": 100000,
+      "errors": {},
+      "examples": [],
+      "timestamp_rollovers": 0,
+      "packet_rollovers": 0,
+      "max_interval_ms": 500,
+      "elapsed_ms": 49999500,
+      "error_count": 0,
+      "status": "PASS",
+      "validation_seconds": 0.6890052000526339,
+      "input_sha256": "5f07d06df63553371168cdcfe32f223e5ad22e40e1d4c92a9f27dd2c04bcfe4d"
+    }
+  },
+  "all_expectations_met": true
+}

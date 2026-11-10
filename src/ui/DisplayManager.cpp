@@ -116,8 +116,9 @@ void DisplayManager::drawHeader(const char* title, const SystemStats& stats) {
   frame_.setTextColor(primary_, panel_);
   frame_.drawString(title, 5, 10, 2);
   frame_.setTextDatum(MR_DATUM);
-  frame_.setTextColor(stats.sdLogging ? green_ : red_, panel_);
-  frame_.drawString(stats.sdLogging ? "SD LOG" : "SD ERR", 315, 10, 2);
+  frame_.setTextColor(stats.demoMode ? cyan_ : (stats.sdLogging ? green_ : red_), panel_);
+  frame_.drawString(stats.demoMode ? "DEMO" : (stats.sdLogging ? "SD LOG" : "SD ERR"),
+                    315, 10, 2);
 }
 
 void DisplayManager::drawArcGauge(int16_t cx, int16_t cy, int16_t radius,
@@ -257,8 +258,8 @@ void DisplayManager::drawLive(const TelemetrySample& sample,
            static_cast<unsigned long>(sample.packetId));
   frame_.drawString(text, 196, 238, 1);
   frame_.setTextDatum(BR_DATUM);
-  frame_.setTextColor(stats.sdLogging ? green_ : red_, bg_);
-  frame_.drawString(stats.logFileName, 316, 238, 1);
+  frame_.setTextColor(stats.demoMode ? cyan_ : (stats.sdLogging ? green_ : red_), bg_);
+  frame_.drawString(stats.demoMode ? "SYNTHETIC" : stats.logFileName, 316, 238, 1);
 }
 
 void DisplayManager::drawMagnitudeBar(int16_t x, int16_t y, int16_t w,
@@ -320,12 +321,17 @@ void DisplayManager::drawSystem(const TelemetrySample& sample,
   snprintf(right, sizeof(right), "%.3f  %.3f  %.3f", sample.gyroX,
            sample.gyroY, sample.gyroZ);
   row("GYRO XYZ", right, primary_);
-  snprintf(right, sizeof(right), "%.2f V", stats.batteryVoltage);
-  row("BATTERY", right,
-      stats.batteryVoltage < Config::BATTERY_EMPTY_V ? red_ : green_);
-  snprintf(right, sizeof(right), "%.1f / %.1f MiB",
-           stats.sdFreeBytes / 1048576.0, stats.sdTotalBytes / 1048576.0);
-  row("SD FREE / TOTAL", right, stats.sdLogging ? green_ : red_);
+  if (stats.demoMode) {
+    row("BATTERY", "NOT TESTED", cyan_);
+    row("SD CARD", "NOT TESTED", cyan_);
+  } else {
+    snprintf(right, sizeof(right), "%.2f V", stats.batteryVoltage);
+    row("BATTERY", right,
+        stats.batteryVoltage < Config::BATTERY_EMPTY_V ? red_ : green_);
+    snprintf(right, sizeof(right), "%.1f / %.1f MiB",
+             stats.sdFreeBytes / 1048576.0, stats.sdTotalBytes / 1048576.0);
+    row("SD FREE / TOTAL", right, stats.sdLogging ? green_ : red_);
+  }
   formatDuration(stats.uptimeMs, right, sizeof(right));
   row("UPTIME", right, primary_);
   const uint32_t totalSlots = sample.packetId + stats.droppedDeadlines;

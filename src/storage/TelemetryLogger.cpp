@@ -8,6 +8,7 @@
 #include "TelemetryLogger.h"
 
 #include "config.h"
+#include "telemetry_csv.h"
 
 namespace {
 constexpr char CSV_HEADER[] =
@@ -65,14 +66,7 @@ bool TelemetryLogger::append(const TelemetrySample& sample) {
   }
 
   char line[256];
-  const int length = snprintf(
-      line, sizeof(line),
-      "%lu,%lu,%.2f,%.2f,%.2f,%.2f,%.3f,%.3f,%.3f,%.4f,%.4f,%.4f,%08lX\n",
-      static_cast<unsigned long>(sample.packetId),
-      static_cast<unsigned long>(sample.timestampMs), sample.temperatureC,
-      sample.humidityPct, sample.pressureHpa, sample.altitudeM, sample.accelX,
-      sample.accelY, sample.accelZ, sample.gyroX, sample.gyroY, sample.gyroZ,
-      static_cast<unsigned long>(sample.checksum));
+  const int length = formatTelemetryCsv(line, sizeof(line), sample);
 
   if (length <= 0 || static_cast<size_t>(length) >= sizeof(line) ||
       file_.write(reinterpret_cast<const uint8_t*>(line), length) !=

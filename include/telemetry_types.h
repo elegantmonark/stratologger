@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include <Arduino.h>
+#include <stdint.h>
 #include <math.h>
 
 enum FaultBit : uint8_t {
@@ -47,6 +47,7 @@ struct TelemetrySample {
 };
 
 struct SystemStats {
+  bool demoMode = false;
   uint32_t uptimeMs = 0;
   uint32_t droppedDeadlines = 0;
   uint32_t checksumErrors = 0;
